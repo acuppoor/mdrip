@@ -2,6 +2,9 @@
     ViewData["Title"] = "Home Page";
 }
 
+<script src="https://d3js.org/d3.v5.min.js"></script>
+
+
 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
     <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -103,4 +106,24 @@
             <li><a href="https://go.microsoft.com/fwlink/?LinkID=398609">Publish to Microsoft Azure Web Apps</a></li>
         </ul>
     </div>
+    <div class="col-md-3">
+        My map will go here
+
+        <div id="map"></div>
+
+    </div>
 </div>
+
+
+<script>
+    d3.selectAll("div").style("color", "red");
+
+    function myMap() {
+        var mapProp= {
+            center:new google.maps.LatLng(51.508742,-0.120850),
+            zoom:5,
+        };
+        var map=new google.maps.Map(document.getElementById("map"),mapProp);
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDb6BqMVbPU5a6zxYg88S7AQcfoPbkhEaU&callback=myMap"></script>

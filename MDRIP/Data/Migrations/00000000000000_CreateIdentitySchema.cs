@@ -127,6 +127,8 @@ namespace MDRIP.Data.Migrations
                 name: "AspNetUserRoles",
                 columns: table => new
                 {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Autoincrement", true),
                     UserId = table.Column<string>(nullable: false),
                     RoleId = table.Column<string>(nullable: false)
                 },

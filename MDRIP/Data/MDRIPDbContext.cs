@@ -8,9 +8,9 @@ using MDRIP.Models;
 
 namespace MDRIP.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class MDRIPDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        public MDRIPDbContext(DbContextOptions<MDRIPDbContext> options)
             : base(options)
         {
         }
