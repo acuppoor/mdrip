@@ -22,7 +22,7 @@ namespace MDRIP
             routes.MapRoute(
                 name: "map",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Visualisation", action = "map", id = UrlParameter.Optional }
+                defaults: new { controller = "Visualisation", action = "Map", id = UrlParameter.Optional }
             );
         }
     }
