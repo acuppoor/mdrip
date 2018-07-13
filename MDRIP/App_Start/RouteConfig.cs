@@ -18,6 +18,12 @@ namespace MDRIP
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: "map",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Visualisation", action = "map", id = UrlParameter.Optional }
+            );
         }
     }
 }
