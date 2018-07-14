@@ -48,56 +48,8 @@ namespace MDRIP
             mail.CC.Add(new MailAddress(emailAdd));
             mail.IsBodyHtml = true;
             smtpClient.Send(mail);
+            return Task.FromResult(0);
 
-
-            ///////////////////////////
-            //var myMessage = new SendGridMessage();
-            //myMessage.AddTo(message.Destination);
-            //myMessage.From = new SendGrid.Helpers.Mail.EmailAddress("honsmdrip@gmail.com", "No Reply - MDRIP");
-            //myMessage.Subject = message.Subject;
-            //myMessage.PlainTextContent = message.Body;
-            //myMessage.HtmlContent = message.Body;
-
-            //var credentials = new NetworkCredential(
-            //           ConfigurationManager.AppSettings["mailAccount"],
-            //           ConfigurationManager.AppSettings["mailPassword"]
-            //           );
-
-            //// Create a Web transport for sending email.
-            ////var transportWeb = new Web(credentials);
-
-            //#region formatter
-            //string text = string.Format("Please click on this link to {0}: {1}", message.Subject, message.Body);
-            //string html = "Please confirm your account by clicking this link: <a href=\"" + message.Body + "\">link</a><br/>";
-
-            //html += HttpUtility.HtmlEncode(@"Or click on the copy the following link on the browser:" + message.Body);
-            //#endregion
-
-            //MailMessage msg = new MailMessage();
-            //msg.From = new MailAddress("honsmdrip@gmail.com");
-            //msg.To.Add(new MailAddress(message.Destination));
-            //msg.Subject = message.Subject;
-            //msg.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(text, null, MediaTypeNames.Text.Plain));
-            //msg.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(html, null, MediaTypeNames.Text.Html));
-
-            //SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", Convert.ToInt32(587));
-            //smtpClient.UseDefaultCredentials = false;
-            //smtpClient.Credentials = credentials;
-            //smtpClient.EnableSsl = true;
-            //smtpClient.Send(msg);
-
-            // Send the email.
-            //if (transportWeb != null)
-            //{
-                //return transportWeb.DeliverAsync(myMessage);
-               
-            //}
-            //else
-            //{
-                return Task.FromResult(0);
-            //}
-
-            //return Task.FromResult(0);
         }
     }
 
@@ -141,7 +93,7 @@ namespace MDRIP
             // Configure validation logic for passwords
             manager.PasswordValidator = new PasswordValidator
             {
-                RequiredLength = 6,
+                RequiredLength = 7,
                 RequireNonLetterOrDigit = true,
                 RequireDigit = true,
                 RequireLowercase = true,
@@ -157,12 +109,12 @@ namespace MDRIP
             // You can write your own provider and plug it in here.
             manager.RegisterTwoFactorProvider("Phone Code", new PhoneNumberTokenProvider<ApplicationUser>
             {
-                MessageFormat = "Your security code is {0}"
+                MessageFormat = "MDRIP: Your security code is {0}"
             });
             manager.RegisterTwoFactorProvider("Email Code", new EmailTokenProvider<ApplicationUser>
             {
                 Subject = "Security Code",
-                BodyFormat = "Your security code is {0}"
+                BodyFormat = "MDRIP: Your security code is {0}"
             });
             manager.EmailService = new EmailService();
             manager.SmsService = new SmsService();

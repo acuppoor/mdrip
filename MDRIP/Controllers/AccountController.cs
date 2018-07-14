@@ -75,7 +75,7 @@ namespace MDRIP.Controllers
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: true);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -85,6 +85,7 @@ namespace MDRIP.Controllers
                 case SignInStatus.RequiresVerification:
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 case SignInStatus.Failure:
+                    // Kushal: Maybe implement that account is not approved yet page! with admin contact help
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");
                     return View(model);
@@ -128,6 +129,7 @@ namespace MDRIP.Controllers
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.Failure:
+                    // account is not approved.
                 default:
                     ModelState.AddModelError("", "Invalid code.");
                     return View(model);
@@ -151,7 +153,18 @@ namespace MDRIP.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { 
+                    UserName = model.Email, 
+                    Email = model.Email,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    HouseAndStreet = model.HouseAndStreet,
+                    Region = model.Region
+                };
+
+                // adding the other details of a user account
+
+
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

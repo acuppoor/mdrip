@@ -16,6 +16,12 @@ namespace MDRIP.Models
             // Add custom user claims here
             return userIdentity;
         }
+
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string HouseAndStreet { get; set; }
+        public string Region { get; set; }
+        public string Country { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

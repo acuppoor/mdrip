@@ -65,6 +65,31 @@ namespace MDRIP.Models
     public class RegisterViewModel
     {
         [Required]
+        [StringLength(100, ErrorMessage = "The {0} is required.", MinimumLength = 2)]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} is required.", MinimumLength = 2)]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} is required.", MinimumLength = 6)]
+        [Display(Name = "House And Street")]
+        public string HouseAndStreet { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} is required.", MinimumLength = 6)]
+        [Display(Name = "Region")]
+        public string Region { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} is required.", MinimumLength = 6)]
+        [Display(Name = "Country")]
+        public string Country { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
