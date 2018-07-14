@@ -11,6 +11,9 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using MDRIP.Models;
+using System.Net.Mail;
+using System.Diagnostics;
+using Twilio;
 
 namespace MDRIP
 {
@@ -19,6 +22,24 @@ namespace MDRIP
         public Task SendAsync(IdentityMessage message)
         {
             // Plug in your email service here to send an email.
+
+            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
+
+            String emailAdd = System.Configuration.ConfigurationManager.AppSettings["mailAccount"];
+
+            smtpClient.Credentials = new System.Net.NetworkCredential(emailAdd, System.Configuration.ConfigurationManager.AppSettings["mailPassword"]);
+            smtpClient.UseDefaultCredentials = true;
+            smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+            smtpClient.EnableSsl = true;
+            MailMessage mail = new MailMessage();
+            mail.Body = message.Body;
+            mail.Subject = "MDRIP - DO NOT REPLY";
+            mail.To.Add(message.Destination);
+            mail.From = new MailAddress(emailAdd, "MDRIP Admin");
+            mail.To.Add(new MailAddress("acuppoor@gmail.com"));
+            mail.CC.Add(new MailAddress(emailAdd));
+            smtpClient.Send(mail);
+
             return Task.FromResult(0);
         }
     }
@@ -27,7 +48,17 @@ namespace MDRIP
     {
         public Task SendAsync(IdentityMessage message)
         {
-            // Plug in your SMS service here to send a text message.
+            // Uncomment the following block to use twilio 2 factor auth
+
+             //var Twilio = new TwilioRestClient(
+             //  System.Configuration.ConfigurationManager.AppSettings["SMSAccountIdentification"],
+             //  System.Configuration.ConfigurationManager.AppSettings["SMSAccountPassword"]);
+             //var result = Twilio.SendMessage(
+             //  System.Configuration.ConfigurationManager.AppSettings["SMSAccountFrom"],
+             //  message.Destination, message.Body
+             //);
+             //Trace.TraceInformation(result.Status);
+
             return Task.FromResult(0);
         }
     }
