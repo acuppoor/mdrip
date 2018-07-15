@@ -1,4 +1,4 @@
-docker run -d --name mdripsql -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=123456aA!' -e 'MSSQL_PID=Developer' -p 1433:1433 microsoft/mssql-server-linux:2017-latest
+docker run -d --name mdrip -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=123456aA!' -e 'MSSQL_PID=Developer' -p 1433:1433 microsoft/mssql-server-linux:2017-latest
 
 - since this image is already installed, just run docker start/run mdrip/mdripsql
 - this is to get the docker image up and running for mssql

@@ -20,12 +20,14 @@ namespace MDRIP.Controllers
 
         public AccountController()
         {
+            //HttpContext.User.Identity.Name
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
         {
             UserManager = userManager;
             SignInManager = signInManager;
+
         }
 
         public ApplicationSignInManager SignInManager
@@ -58,6 +60,7 @@ namespace MDRIP.Controllers
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
+
             return View();
         }
 
@@ -166,6 +169,7 @@ namespace MDRIP.Controllers
 
 
                 var result = await UserManager.CreateAsync(user, model.Password);
+                (await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie)).AddClaim(new Claim("FirstName", user.FirstName));
                 if (result.Succeeded)
                 {
                     // The line below will log in the user when he creates an account
@@ -177,6 +181,7 @@ namespace MDRIP.Controllers
                      var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                      await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
                     return View("Login");
+                    cl
 
                     //return RedirectToAction("Index", "Home");
                 }
