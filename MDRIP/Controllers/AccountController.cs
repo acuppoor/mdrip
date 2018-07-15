@@ -169,7 +169,7 @@ namespace MDRIP.Controllers
 
 
                 var result = await UserManager.CreateAsync(user, model.Password);
-                (await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie)).AddClaim(new Claim("FirstName", user.FirstName));
+                await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
                 if (result.Succeeded)
                 {
                     // The line below will log in the user when he creates an account
