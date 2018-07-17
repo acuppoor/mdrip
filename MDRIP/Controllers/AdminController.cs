@@ -1,6 +1,7 @@
 ﻿using MDRIP.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,8 +27,12 @@ namespace MDRIP.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            var Roles = context.Roles.ToList();
-            return View(Roles);
+            var RolesList = context.Roles.ToList();
+            var AccountsList = context.Users.ToList();
+            return View(new AdminModel() {
+                Accounts = AccountsList,
+                Roles = RolesList
+            });
         }
 
         public Boolean IsAdminUser()
@@ -49,7 +54,7 @@ namespace MDRIP.Controllers
             return false;
         }
 
-        public ActionResult Create()
+        public ActionResult CreateRole()
         {
             if ((!User.Identity.IsAuthenticated) || (User.Identity.IsAuthenticated && !IsAdminUser()))
             {
@@ -60,9 +65,8 @@ namespace MDRIP.Controllers
             return View(Role);
         }
 
-
         [HttpPost]
-        public ActionResult Create(IdentityRole Role)
+        public ActionResult CreateRole(IdentityRole Role)
         {
             if ((!User.Identity.IsAuthenticated) || (User.Identity.IsAuthenticated && !IsAdminUser()))
             {
@@ -72,6 +76,59 @@ namespace MDRIP.Controllers
             context.Roles.Add(Role);
             context.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult CreateAccount()
+        {
+            if ((!User.Identity.IsAuthenticated) || (User.Identity.IsAuthenticated && !IsAdminUser()))
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            var RolesList = context.Roles.ToList();
+            return View(new CreateAccountAdminModel() { Roles=RolesList});
+        }
+        
+        [HttpPost]
+        public ActionResult CreateAccount(CreateAccountAdminModel models)
+        {
+            var model = models.Account;
+
+            var user = new ApplicationUser
+            {
+                UserName = model.Email,
+                Email = model.Email,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                HouseAndStreet = model.HouseAndStreet,
+                Region = model.Region,
+                Activated = model.Activated
+            };
+
+            using (var db = new ApplicationDbContext())
+            {
+                var store = new UserStore<ApplicationUser>(db);
+                var manager = new UserManager<ApplicationUser, string>(store);
+
+                var result = manager.Create(user, model.Password);
+                if (!result.Succeeded)
+                {
+                    AddErrors(result);
+                }
+
+                result = manager.AddToRole(user.Id, model.Role);
+                if (!result.Succeeded) {
+                    AddErrors(result);
+                }
+            }
+            return RedirectToAction("Index");
+        }
+
+        private void AddErrors(IdentityResult result)
+        {
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError("", error);
+            }
         }
     }
 }

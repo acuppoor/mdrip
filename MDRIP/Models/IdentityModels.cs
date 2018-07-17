@@ -24,6 +24,7 @@ namespace MDRIP.Models
         public string HouseAndStreet { get; set; }
         public string Region { get; set; }
         public string Country { get; set; }
+        public bool Activated { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

@@ -76,6 +76,12 @@ namespace MDRIP.Controllers
                 return View(model);
             }
 
+            var user = UserManager.FindByEmail(model.Email);
+            if (!UserManager.IsEmailConfirmed(user.Id) || !user.Activated)
+            {
+                return View("EmailNotConfirmed");
+            }
+
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: true);
@@ -88,7 +94,7 @@ namespace MDRIP.Controllers
                 case SignInStatus.RequiresVerification:
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 case SignInStatus.Failure:
-                    // Kushal: Maybe implement that account is not approved yet page! with admin contact help
+                    
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");
                     return View(model);
@@ -162,7 +168,8 @@ namespace MDRIP.Controllers
                     FirstName = model.FirstName,
                     LastName = model.LastName,
                     HouseAndStreet = model.HouseAndStreet,
-                    Region = model.Region
+                    Region = model.Region,
+                    Activated = false
                 };
 
                 // adding the other details of a user account
@@ -174,12 +181,15 @@ namespace MDRIP.Controllers
                 {
                     // The line below will log in the user when he creates an account
                     //await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
-                     string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                     var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                     await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                    UserManager.AddToRole(user.Id, "General Public");
+
+                    string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
                     return View("Login");
 
                     //return RedirectToAction("Index", "Home");
