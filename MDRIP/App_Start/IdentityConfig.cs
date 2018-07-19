@@ -44,8 +44,7 @@ namespace MDRIP
             mail.Subject = "MDRIP - DO NOT REPLY";
             mail.To.Add(new MailAddress(message.Destination));
             mail.From = new MailAddress(emailAdd, "MDRIP Admin");
-            mail.To.Add(new MailAddress("acuppoor@gmail.com"));
-            mail.CC.Add(new MailAddress(emailAdd));
+            //mail.CC.Add(new MailAddress(emailAdd));
             mail.IsBodyHtml = true;
             smtpClient.Send(mail);
             return Task.FromResult(0);

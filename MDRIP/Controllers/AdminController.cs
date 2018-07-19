@@ -29,7 +29,8 @@ namespace MDRIP.Controllers
 
             var RolesList = context.Roles.ToList();
             var AccountsList = context.Users.ToList();
-            return View(new AdminModel() {
+            return View(new AdminModel()
+            {
                 Accounts = AccountsList,
                 Roles = RolesList
             });
@@ -85,9 +86,9 @@ namespace MDRIP.Controllers
                 return RedirectToAction("Index", "Home");
             }
             var RolesList = context.Roles.ToList();
-            return View(new CreateAccountAdminModel() { Roles=RolesList});
+            return View(new CreateAccountAdminModel() { Roles = RolesList });
         }
-        
+
         [HttpPost]
         public ActionResult CreateAccount(CreateAccountAdminModel models)
         {
@@ -101,24 +102,32 @@ namespace MDRIP.Controllers
                 LastName = model.LastName,
                 HouseAndStreet = model.HouseAndStreet,
                 Region = model.Region,
-                Activated = model.Activated
+                Activated = model.Activated,
+                Country = model.Country
             };
 
-            using (var db = new ApplicationDbContext())
+
+            var manager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+
+            if (manager == null) {
+                var store = new UserStore<ApplicationUser>(context);
+                manager = (ApplicationUserManager) new UserManager<ApplicationUser, string>(store);
+            }
+
+            var result = manager.Create(user, model.Password);
+
+            string code = manager.GenerateEmailConfirmationToken(user.Id);
+            var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+            manager.SendEmail(user.Id, "Confirm your account", "An account has been created for you in MDRIP. Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    
+            if (!result.Succeeded)
             {
-                var store = new UserStore<ApplicationUser>(db);
-                var manager = new UserManager<ApplicationUser, string>(store);
+                AddErrors(result);
+            }
 
-                var result = manager.Create(user, model.Password);
-                if (!result.Succeeded)
-                {
-                    AddErrors(result);
-                }
-
-                result = manager.AddToRole(user.Id, model.Role);
-                if (!result.Succeeded) {
-                    AddErrors(result);
-                }
+            result = manager.AddToRole(user.Id, model.Role);
+            if (!result.Succeeded) {
+                AddErrors(result);
             }
             return RedirectToAction("Index");
         }
