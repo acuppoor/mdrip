@@ -79,7 +79,8 @@ namespace MDRIP.Controllers
             var user = UserManager.FindByEmail(model.Email);
             if (!UserManager.IsEmailConfirmed(user.Id) || !user.Activated)
             {
-                return View("EmailNotConfirmed");
+                ModelState.AddModelError("", "You need to confirm your email.");
+                return View("Login");
             }
 
             // This doesn't count login failures towards account lockout
@@ -169,11 +170,9 @@ namespace MDRIP.Controllers
                     LastName = model.LastName,
                     HouseAndStreet = model.HouseAndStreet,
                     Region = model.Region,
-                    Activated = false
+                    Activated = false,
+                    Country = model.Country
                 };
-
-                // adding the other details of a user account
-
 
                 var result = await UserManager.CreateAsync(user, model.Password);
                 await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
