@@ -80,12 +80,12 @@ namespace MDRIP.Models
         public string HouseAndStreet { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} is required.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "The {0} is required.", MinimumLength = 2)]
         [Display(Name = "Region")]
         public string Region { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} is required.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "The {0} is required.", MinimumLength = 2)]
         [Display(Name = "Country")]
         public string Country { get; set; }
 

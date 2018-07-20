@@ -11,10 +11,17 @@
         @Html.AntiForgeryToken()
 
         <ul class="nav navbar-nav navbar-right">
-            <li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Logged in as @(Helper.GetFirstName(User)) <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li>@Html.ActionLink("My Account", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage"})</li>
+                    <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>    
+                </ul>
+            </li>
+<!--            <li>
                 @Html.ActionLink("Hello " + Helper.GetFirstName(User) +"!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
             </li>
-            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>-->
         </ul>
     }
 }

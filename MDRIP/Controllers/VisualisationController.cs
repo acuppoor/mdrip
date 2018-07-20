@@ -18,6 +18,10 @@ namespace MDRIP.Controllers
             return View();
         }
 
+        public ActionResult Choropleth()
+        {
+            return View();
+        }
         //public ActionResult About()
         //{
         //    ViewBag.Message = "Your application description page.";
