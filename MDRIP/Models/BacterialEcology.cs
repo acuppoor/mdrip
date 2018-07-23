@@ -17,5 +17,9 @@ namespace MDRIP.Models
         public String ModeOfTransmission { get; set; }
         public String Prevention { get; set; }
         public String Treatment { get; set; }
+
+        public ICollection<Bacteria> bacteria { get; set; }
+        public ICollection<MDR> mdr { get; set; }
+        /// add application user 
     }
 }

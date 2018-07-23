@@ -1,0 +1,106 @@
+﻿@model MDRIP.Models.ManagingInfections
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ManagingInfections</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SeasonalInfection)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SeasonalInfection)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SpreadOfInfection)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SpreadOfInfection)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CauseOfBaterialInfection)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CauseOfBaterialInfection)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WhereToGetHelp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WhereToGetHelp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BacteriaEntrance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BacteriaEntrance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Handwashing)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Handwashing)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReducingHospitalInfection)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReducingHospitalInfection)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Medicines_SideEffects)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Medicines_SideEffects)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SafetyIssues)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SafetyIssues)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrescriptionMedicines)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrescriptionMedicines)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkPlaceSafetey)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkPlaceSafetey)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -18,6 +18,10 @@ namespace MDRIP.Models
         public String Medicines_SideEffects { get; set; }
         public String SafetyIssues { get; set; }
         public String PrescriptionMedicines { get; set; }
-        public String WorkPlaceSaftey { get; set; }
+        public String WorkPlaceSafetey { get; set; }
+
+        public ICollection<DiagnosticCenter> center { get; set; }
+        // add application user
+
     }
 }

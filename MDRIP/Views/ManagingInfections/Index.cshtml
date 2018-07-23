@@ -1,0 +1,93 @@
+﻿@model IEnumerable<MDRIP.Models.ManagingInfections>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SeasonalInfection)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SpreadOfInfection)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CauseOfBaterialInfection)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WhereToGetHelp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BacteriaEntrance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Handwashing)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReducingHospitalInfection)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Medicines_SideEffects)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SafetyIssues)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrescriptionMedicines)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WorkPlaceSafetey)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SeasonalInfection)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SpreadOfInfection)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CauseOfBaterialInfection)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WhereToGetHelp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BacteriaEntrance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Handwashing)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReducingHospitalInfection)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Medicines_SideEffects)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SafetyIssues)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrescriptionMedicines)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WorkPlaceSafetey)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

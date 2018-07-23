@@ -14,5 +14,8 @@ namespace MDRIP.Models
         public String CoordinteWithMCS { get; set; }
         public String EpidemiologyInvestigationActivities { get; set; }
         public String CollectingAndAnalysingDataToDevelopObjectives { get; set; }
+
+        public ICollection<DiagnosticCenter> center { get; set; }
+        // add  appplication user
     }
 }

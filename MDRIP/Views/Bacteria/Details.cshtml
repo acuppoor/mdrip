@@ -1,0 +1,162 @@
+﻿@model MDRIP.Models.Bacteria
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Bacteria</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Specie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Specie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Taxonomy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Taxonomy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Definition)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Definition)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GramStaining)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GramStaining)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Shape)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Shape)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OxygenRequirement)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OxygenRequirement)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClinicalCharacteristics)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClinicalCharacteristics)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prevalance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prevalance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Occurence)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Occurence)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mortality)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mortality)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InvolinDiseases)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InvolinDiseases)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CausingInfections)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CausingInfections)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Likeness)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Likeness)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Treatment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Treatment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Antibiotics)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Antibiotics)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MDR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MDR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InteractionWithOrganism)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InteractionWithOrganism)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,66 @@
+﻿@model MDRIP.Models.EmergencyPreparation
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>EmergencyPreparation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CoordinatingHealthRegionalState)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CoordinatingHealthRegionalState)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Developing_DisseminatingInformationToMedicalCommunnity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Developing_DisseminatingInformationToMedicalCommunnity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PartnersToImplementPHDContainmentMeaseures)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PartnersToImplementPHDContainmentMeaseures)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CoordinteWithMCS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CoordinteWithMCS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EpidemiologyInvestigationActivities)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EpidemiologyInvestigationActivities)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CollectingAndAnalysingDataToDevelopObjectives)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CollectingAndAnalysingDataToDevelopObjectives)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

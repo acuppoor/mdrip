@@ -1,0 +1,63 @@
+﻿@model IEnumerable<MDRIP.Models.EmergencyPreparation>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CoordinatingHealthRegionalState)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Developing_DisseminatingInformationToMedicalCommunnity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PartnersToImplementPHDContainmentMeaseures)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CoordinteWithMCS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EpidemiologyInvestigationActivities)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CollectingAndAnalysingDataToDevelopObjectives)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CoordinatingHealthRegionalState)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Developing_DisseminatingInformationToMedicalCommunnity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PartnersToImplementPHDContainmentMeaseures)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CoordinteWithMCS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EpidemiologyInvestigationActivities)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CollectingAndAnalysingDataToDevelopObjectives)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
