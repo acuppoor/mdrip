@@ -1,0 +1,56 @@
+﻿<nav class="navbar navbar-expand-lg bg-dark fixed-top">
+    <div class="container">
+        <div class="navbar-translate">
+            <a class="navbar-brand bold nav-item-newsize" href="@Url.Action("Index","Home")" rel="tooltip" title="" data-placement="bottom" target="_blank">
+                MDRIP
+            </a>
+            <button class="navbar-toggler navbar-toggler toggled" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+            </button>
+           
+        </div>
+        <div class="collapse navbar-collapse justify-content-center has-image" id="navigation" style="background: ~/Assets/img/blurred-image-1.jpg 0% 0% / cover;">
+            <ul class="navbar-nav">
+                <li class="nav-item nav-item-newsize">
+                    <a class="nav-link btn btn-neutral btn-primary btn-simple btn-round bold" href="javascript:void(0)">
+                        <i class="fa fa-fw fa-dashboard"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                @Html.Partial("_LoginPartial")
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!--Default ASPNET Navbar-->
+<!--<div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("MDRIP", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Dashboard", "Index", "Home")</li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Visualisations <span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li>@Html.ActionLink("Map", "Map", "Visualisation")</li>
+                        <li>@Html.ActionLink("Choropleth Graph", "Choropleth", "Visualisation")</li>    
+                      </ul>
+                    </li>
+                        @if (User.IsInRole("Admin")){
+                            <li>@Html.ActionLink("Admin", "Index", "Admin")</li>
+                        }
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>-->

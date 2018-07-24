@@ -25,6 +25,21 @@ namespace MDRIP
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/newbootstrap").Include(
+                "~/Scripts/script/popper.min.js",
+                "~/Scripts/script/bootstrap.min.js",
+                "~/Scripts/now-ui-kit.js",
+                "~/Scripts/script/bootstrap-switch.js",
+                "~/Scripts/script/nouislider.min.js"));
+            
+            bundles.Add(new StyleBundle("~/Content/newcss").Include(
+                      "~/Content/style/bootstrap.min.css",
+                      "~/Content/style/now-ui-kit.css",
+                "~/Content/style/font-awesome.min.css",
+                "~/Content/style/ionicons.min.css",
+                "~/Content/style/mycss.css"));
+
         }
     }
 }

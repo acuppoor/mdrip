@@ -1,0 +1,48 @@
+﻿@using Microsoft.AspNet.Identity
+@using System.Security.Claims
+@using MDRIP.Models
+@using MDRIP.helper
+@using Microsoft.AspNet.Identity.EntityFramework
+
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <li class="nav-item dropdown nav-item-newsize">
+            <a class="nav-link dropdown-toggle bold" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <p>
+                    <i class="now-ui-icons users_single-02" aria-hidden="true"></i> Logged in as @(Helper.GetFirstName(User))
+                </p>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+        </li>
+
+<!--        <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-expanded="true">
+                <i class="now-ui-icons users_single-02" aria-hidden="true"></i> Logged in as @(Helper.GetFirstName(User))
+            </a>
+            <div class="dropdown-menu dropdown-menu-right show" aria-labelledby="navbarDropdownMenuLink">
+                @Html.ActionLink("My Account", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class="dropdown-item"})
+                <div class="divider"></div>
+                <a href="javascript:document.getElementById('logoutForm').submit()" class="dropdown-item">Log off</a>
+            </div>
+        </li>-->
+<!--            <li>
+                @Html.ActionLink("Hello " + Helper.GetFirstName(User) +"!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            </li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>-->
+    }
+}
+else
+{
+<!--    <ul class="nav navbar-nav navbar-right">-->
+        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+<!--    </ul>-->
+}
