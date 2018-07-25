@@ -13,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MDRIP</RootNamespace>
     <AssemblyName>MDRIP</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -24,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -52,11 +53,7 @@
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
@@ -306,9 +303,17 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BacteriaController.cs" />
+    <Compile Include="Controllers\BacterialEcologiesController.cs" />
+    <Compile Include="Controllers\ClinicalInformationsController.cs" />
+    <Compile Include="Controllers\DiagnosticCentersController.cs" />
+    <Compile Include="Controllers\EmergencyPreparationsController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InfectionsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ManagingInfectionsController.cs" />
+    <Compile Include="Controllers\MDRsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -320,8 +325,17 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ViewModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Bacteria.cs" />
+    <Compile Include="Models\BacterialEcology.cs" />
+    <Compile Include="Models\ClinicalInformation.cs" />
+    <Compile Include="Models\DiagnosticCenter.cs" />
+    <Compile Include="Models\EmergencyPreparation.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Infections.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ManagingInfections.cs" />
+    <Compile Include="Models\MDR.cs" />
+    <Compile Include="Models\MDRIPContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Controllers\VisualisationController.cs" />
@@ -356,6 +370,9 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\vue.js" />
     <Content Include="Scripts\vue.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -391,6 +408,46 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\EmergencyPreparations\Create.cshtml" />
+    <Content Include="Views\EmergencyPreparations\Delete.cshtml" />
+    <Content Include="Views\EmergencyPreparations\Details.cshtml" />
+    <Content Include="Views\EmergencyPreparations\Edit.cshtml" />
+    <Content Include="Views\EmergencyPreparations\Index.cshtml" />
+    <Content Include="Views\Bacteria\Create.cshtml" />
+    <Content Include="Views\Bacteria\Delete.cshtml" />
+    <Content Include="Views\Bacteria\Details.cshtml" />
+    <Content Include="Views\Bacteria\Edit.cshtml" />
+    <Content Include="Views\Bacteria\Index.cshtml" />
+    <Content Include="Views\BacterialEcologies\Create.cshtml" />
+    <Content Include="Views\BacterialEcologies\Delete.cshtml" />
+    <Content Include="Views\BacterialEcologies\Details.cshtml" />
+    <Content Include="Views\BacterialEcologies\Edit.cshtml" />
+    <Content Include="Views\BacterialEcologies\Index.cshtml" />
+    <Content Include="Views\ClinicalInformations\Create.cshtml" />
+    <Content Include="Views\ClinicalInformations\Delete.cshtml" />
+    <Content Include="Views\ClinicalInformations\Details.cshtml" />
+    <Content Include="Views\ClinicalInformations\Edit.cshtml" />
+    <Content Include="Views\ClinicalInformations\Index.cshtml" />
+    <Content Include="Views\DiagnosticCenters\Create.cshtml" />
+    <Content Include="Views\DiagnosticCenters\Delete.cshtml" />
+    <Content Include="Views\DiagnosticCenters\Details.cshtml" />
+    <Content Include="Views\DiagnosticCenters\Edit.cshtml" />
+    <Content Include="Views\DiagnosticCenters\Index.cshtml" />
+    <Content Include="Views\Infections\Create.cshtml" />
+    <Content Include="Views\Infections\Delete.cshtml" />
+    <Content Include="Views\Infections\Details.cshtml" />
+    <Content Include="Views\Infections\Edit.cshtml" />
+    <Content Include="Views\Infections\Index.cshtml" />
+    <Content Include="Views\ManagingInfections\Create.cshtml" />
+    <Content Include="Views\ManagingInfections\Delete.cshtml" />
+    <Content Include="Views\ManagingInfections\Details.cshtml" />
+    <Content Include="Views\ManagingInfections\Edit.cshtml" />
+    <Content Include="Views\ManagingInfections\Index.cshtml" />
+    <Content Include="Views\MDRs\Create.cshtml" />
+    <Content Include="Views\MDRs\Delete.cshtml" />
+    <Content Include="Views\MDRs\Details.cshtml" />
+    <Content Include="Views\MDRs\Edit.cshtml" />
+    <Content Include="Views\MDRs\Index.cshtml" />
     <Content Include="Views\Visualisation\Map.cshtml" />
     <Content Include="Views\Admin\CreateAccount.cshtml" />
     <Content Include="Views\Admin\CreateRole.cshtml" />

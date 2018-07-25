@@ -1,0 +1,66 @@
+﻿@model MDRIP.Models.ClinicalInformation
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ClinicalInformation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ClinicName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClinicName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClinicAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClinicAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClincFormNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClincFormNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClinicRecords)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClinicRecords)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClincRecordsProviderID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClincRecordsProviderID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClinicalInfectionsInformation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClinicalInfectionsInformation)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

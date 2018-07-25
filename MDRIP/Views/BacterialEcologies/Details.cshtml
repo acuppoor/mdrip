@@ -1,0 +1,90 @@
+﻿@model MDRIP.Models.BacterialEcology
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BacterialEcology</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.District)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.District)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Habitat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Habitat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Infections)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Infections)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Diseases)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Diseases)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeathRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeathRate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModeOfTransmission)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModeOfTransmission)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prevention)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prevention)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Treatment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Treatment)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

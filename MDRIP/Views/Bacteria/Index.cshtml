@@ -1,0 +1,135 @@
+﻿@model IEnumerable<MDRIP.Models.Bacteria>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Specie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Taxonomy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Definition)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GramStaining)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Shape)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OxygenRequirement)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClinicalCharacteristics)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Prevalance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Occurence)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mortality)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InvolinDiseases)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CausingInfections)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Likeness)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Treatment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Antibiotics)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MDR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InteractionWithOrganism)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Specie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Taxonomy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Definition)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GramStaining)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Shape)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OxygenRequirement)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClinicalCharacteristics)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prevalance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Occurence)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mortality)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InvolinDiseases)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CausingInfections)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Likeness)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Treatment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Antibiotics)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MDR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InteractionWithOrganism)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

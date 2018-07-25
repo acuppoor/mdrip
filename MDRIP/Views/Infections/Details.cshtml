@@ -1,0 +1,162 @@
+﻿@model MDRIP.Models.Infections
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Infections</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Definition)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Definition)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Classification)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Classification)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Symptoms)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Symptoms)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Seasonal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Seasonal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pathophysiology)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pathophysiology)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MyProperty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MyProperty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CausingBacteria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CausingBacteria)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModeOfTransmission)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModeOfTransmission)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Diagnosis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Diagnosis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prevention)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prevention)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Treatment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Treatment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Epidimology)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Epidimology)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeathRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeathRate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.History)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.History)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReportingInstitute)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReportingInstitute)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReportAuthor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReportAuthor)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
