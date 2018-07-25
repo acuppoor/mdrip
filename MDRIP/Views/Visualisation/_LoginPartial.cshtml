@@ -17,9 +17,11 @@
                 </p>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
+<!--                    @Html.ActionLink("My Account", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class="dropdown-item"})--> 
+<!--                    <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>--> 
+             
+                    <a class="dropdown-item" href="@Url.Action("Index", "Manage")"><i class="fa fa-user-md" aria-hidden="true"></i> My Account</a> 
+                    <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-sign-out" aria-hidden="true"></i> Log Out</a> 
             </div>
         </li>
 

@@ -412,6 +412,18 @@
     <Content Include="Scripts\script %28copy%29\nouislider.min.js" />
     <Content Include="Scripts\script %28copy%29\now-ui-kit.js" />
     <Content Include="Scripts\script %28copy%29\popper.min.js" />
+    <Content Include="Scripts\script\bootstrap.min.js" />
+    <Content Include="Scripts\script\bootstrap-datepicker.js" />
+    <Content Include="Scripts\script\bootstrap-switch.js" />
+    <Content Include="Scripts\script\dashboard.js" />
+    <Content Include="Scripts\script\demo.js" />
+    <Content Include="Scripts\script\jquery.3.2.1.min.js" />
+    <Content Include="Scripts\script\jquery.sharrre.js" />
+    <Content Include="Scripts\script\morris.min.js" />
+    <Content Include="Scripts\script\nouislider.min.js" />
+    <Content Include="Scripts\script\now-ui-kit.js" />
+    <Content Include="Scripts\script\popper.min.js" />
+    <Content Include="Scripts\script\raphael.min.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

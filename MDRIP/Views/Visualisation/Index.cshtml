@@ -49,3 +49,188 @@
         </div>
     </div>
 </div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="small-box bg-light">
+            <h6>Infections In Your Area</h6>
+            <br/>
+            <div class="row col-md-12">
+                <div class="col-md-3">
+                    <span class="progress-badge">Name of Infection:</span>
+                    <input type="text" value="Helicobacter Pylori" placeholder="Name" class="form-control">
+                </div>
+                <div class="col-md-3">
+                    <span class="progress-badge">From:</span>
+                    <input type="text" class="form-control date-picker" value="01/01/@DateTime.Now.Year" data-datepicker-color="primary">
+                </div>
+                <div class="col-md-3">
+                    <span class="progress-badge">To:</span>
+                    <input type="text" class="form-control date-picker" value="@DateTime.Now.Day/@DateTime.Now.Month/@DateTime.Now.Year" data-datepicker-color="primary">
+                </div>
+                <div class="col-md-3 justify-content-center">
+                    <span class="progress-badge">&nbsp;</span>
+                    <button class="btn btn-primary btn-round" type="button" style="width:100%">
+                        Submit
+                    </button>
+                </div>
+            </div>
+            <hr/>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="small-box bg-light">
+                        <select class="form-control btn btn-primary btn-round">
+                          <option value="Islamabad" selected>Islamabad</option>
+                          <option value="">Saab</option>
+                          <option value="mercedes">Mercedes</option>
+                          <option value="audi">Audi</option>
+                        </select>
+                    <div id="graph"></div>
+                        <a href="#" class="small-box-footer bg-dark">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="small-box bg-light">
+                    <a href="#" class="small-box-footer bg-dark" style="width:100%">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="small-box bg-light">
+            <h6>Infections In Your Area</h6>
+            <br/>
+            <!--<div class="row col-md-12">
+                <div class="col-md-3">
+                    <span class="progress-badge">Name of Infection:</span>
+                    <input type="text" value="Helicobacter Pylori" placeholder="Name" class="form-control">
+                </div>
+                <div class="col-md-3">
+                    <span class="progress-badge">From:</span>
+                    <input type="text" class="form-control date-picker" value="01/01/@DateTime.Now.Year" data-datepicker-color="primary">
+                </div>
+                <div class="col-md-3">
+                    <span class="progress-badge">To:</span>
+                    <input type="text" class="form-control date-picker" value="@DateTime.Now.Day/@DateTime.Now.Month/@DateTime.Now.Year" data-datepicker-color="primary">
+                </div>
+                <div class="col-md-3 justify-content-center">
+                    <span class="progress-badge">&nbsp;</span>
+                    <button class="btn btn-primary btn-round" type="button" style="width:100%">
+                        Submit
+                    </button>
+                </div>
+            </div>
+            <hr/>-->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="small-box bg-light">
+                        <select class="form-control btn btn-primary btn-round">
+                          <option value="Islamabad" selected>Islamabad</option>
+                          <option value="">Saab</option>
+                          <option value="mercedes">Mercedes</option>
+                          <option value="audi">Audi</option>
+                        </select>
+                    <div id="donut"></div>
+                        <a href="#" class="small-box-footer bg-dark">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="small-box bg-light">
+            <h6>Infections In Your Area</h6>
+            <br/>
+            <!--<div class="row col-md-12">
+                <div class="col-md-3">
+                    <span class="progress-badge">Name of Infection:</span>
+                    <input type="text" value="Helicobacter Pylori" placeholder="Name" class="form-control">
+                </div>
+                <div class="col-md-3">
+                    <span class="progress-badge">From:</span>
+                    <input type="text" class="form-control date-picker" value="01/01/@DateTime.Now.Year" data-datepicker-color="primary">
+                </div>
+                <div class="col-md-3">
+                    <span class="progress-badge">To:</span>
+                    <input type="text" class="form-control date-picker" value="@DateTime.Now.Day/@DateTime.Now.Month/@DateTime.Now.Year" data-datepicker-color="primary">
+                </div>
+                <div class="col-md-3 justify-content-center">
+                    <span class="progress-badge">&nbsp;</span>
+                    <button class="btn btn-primary btn-round" type="button" style="width:100%">
+                        Submit
+                    </button>
+                </div>
+            </div>
+            <hr/>-->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="small-box bg-light">
+                        <select class="form-control btn btn-primary btn-round">
+                          <option value="Islamabad" selected>Islamabad</option>
+                          <option value="">Saab</option>
+                          <option value="mercedes">Mercedes</option>
+                          <option value="audi">Audi</option>
+                        </select>
+                    <div id="bar"></div>
+                        <a href="#" class="small-box-footer bg-dark">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+</div>
+
+
+<script src="/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/script/raphael.min.js"></script>
+<script src="~/Scripts/script/morris.min.js"></script>
+<script>
+Morris.Line({
+      element: 'graph',
+      data: [
+        {x: '2011 Q1', y: 3, z: 3},
+        {x: '2011 Q2', y: 2, z: 1},
+        {x: '2011 Q3', y: 2, z: 4},
+        {x: '2011 Q4', y: 3, z: 3}
+      ],
+      xkey: 'x',
+      ykeys: ['y', 'z'],
+      labels: ['Y', 'Z']
+    });
+
+    Morris.Donut({
+  element: 'donut',
+  data: [
+    {label: "Download Sales", value: 12},
+    {label: "In-Store Sales", value: 30},
+    {label: "Mail-Order Sales", value: 20}
+  ]
+});
+
+    Morris.Bar({
+  element: 'bar',
+  data: [
+    { y: '2006', a: 100, b: 90 },
+    { y: '2007', a: 75,  b: 65 },
+    { y: '2008', a: 50,  b: 40 },
+    { y: '2009', a: 75,  b: 65 },
+    { y: '2010', a: 50,  b: 40 },
+    { y: '2011', a: 75,  b: 65 },
+    { y: '2012', a: 100, b: 90 }
+  ],
+  xkey: 'y',
+  ykeys: ['a', 'b'],
+  labels: ['Series A', 'Series B']
+});
+
+</script>

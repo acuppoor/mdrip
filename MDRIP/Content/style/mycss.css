@@ -101,3 +101,9 @@ color: rgba(0, 0, 0, 0.15)
         .small-box p {
             font-size: 12px
         }
+
+
+    .removecaps {
+        text-transform: none !important
+    }
+   
