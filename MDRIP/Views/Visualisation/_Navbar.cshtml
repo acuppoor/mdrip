@@ -21,6 +21,12 @@
                 </li>
                 @if (User.IsInRole("Admin")) {
                     <li class="nav-item nav-item-newsize">
+                        <a class="nav-link bold" href="@Url.Action("Upload", "Visualisation")">
+                            <i class="fa fa-fw fa-dashboard"></i>
+                            <p>Upload</p>
+                        </a>
+                    </li>
+                    <li class="nav-item nav-item-newsize">
                         <a class="nav-link bold" href="@Url.Action("Index", "Admin")">
                             <i class="fa fa-fw fa-dashboard"></i>
                             <p>Admin</p>

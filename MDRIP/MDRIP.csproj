@@ -480,6 +480,7 @@
     <Content Include="Scripts\script\now-ui-kit.js" />
     <Content Include="Scripts\script\popper.min.js" />
     <Content Include="Scripts\script\raphael.min.js" />
+    <Content Include="Views\Visualisation\Upload.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
