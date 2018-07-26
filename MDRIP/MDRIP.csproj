@@ -339,7 +339,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Controllers\VisualisationController.cs" />
-    <Compile Include="Models\Bacteria.cs" />
     <Compile Include="Models\Country.cs" />
     <Compile Include="Models\Region.cs" />
   </ItemGroup>
