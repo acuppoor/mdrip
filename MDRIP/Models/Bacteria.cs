@@ -9,7 +9,8 @@ namespace MDRIP.Models
     {
         public int ID { get; set; }
         public String Name { get; set; }
-        public String Specie { get; set; }
+        public String Strain { get; set; }
+        public String Introduction { get; set; }
         public String Taxonomy { get; set; }
         public String Definition { get; set; }
         public String GramStaining { get; set; }
@@ -27,9 +28,9 @@ namespace MDRIP.Models
         public String MDR { get; set; }
         public String InteractionWithOrganism { get; set; }
 
-        public ICollection<DiagnosticCenter> center { get; set; }
-        public ICollection<Infections> infections { get; set; }
-        public ICollection<ClinicalInformation> clinicalInformation { get; set; }
+        public ICollection<DiagnosticCenter> Centers { get; set; }
+        public ICollection<Infections> Infections { get; set; }
+        public ICollection<ClinicalInformation> ClinicalInformation { get; set; }
         // add user
     }
 }

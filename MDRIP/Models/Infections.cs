@@ -27,9 +27,9 @@ namespace MDRIP.Models
         public String ReportingInstitute { get; set; }
         public String ReportAuthor { get; set; }
 
-        public ICollection<DiagnosticCenter> center { get; set; }
-        public ICollection<ClinicalInformation> clinicalInformation { get; set; }
-        public ICollection<MDR> mdr { get; set; }
-        public ICollection<Bacteria> bacteria { get; set; }
+        public ICollection<DiagnosticCenter> Centers { get; set; }
+        public ICollection<ClinicalInformation> ClinicalInformation { get; set; }
+        public ICollection<MDR> MDRs { get; set; }
+        public ICollection<Bacteria> Bacterias { get; set; }
     }
 }

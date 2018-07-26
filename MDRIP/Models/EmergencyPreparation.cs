@@ -15,7 +15,7 @@ namespace MDRIP.Models
         public String EpidemiologyInvestigationActivities { get; set; }
         public String CollectingAndAnalysingDataToDevelopObjectives { get; set; }
 
-        public ICollection<DiagnosticCenter> center { get; set; }
+        public ICollection<DiagnosticCenter> Centers { get; set; }
         // add  appplication user
     }
 }

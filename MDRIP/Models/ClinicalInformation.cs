@@ -15,6 +15,6 @@ namespace MDRIP.Models
         public String ClincRecordsProviderID { get; set; }
         public String ClinicalInfectionsInformation { get; set; }
 
-        public ICollection<DiagnosticCenter> Center { get; set; }
+        public ICollection<DiagnosticCenter> Centers { get; set; }
     }
 }

@@ -15,12 +15,12 @@ namespace MDRIP.Models
         public String BacteriaEntrance { get; set; }
         public String Handwashing { get; set; }
         public String ReducingHospitalInfection { get; set; }
-        public String Medicines_SideEffects { get; set; }
+        public String MedicinesSideEffects { get; set; }
         public String SafetyIssues { get; set; }
         public String PrescriptionMedicines { get; set; }
         public String WorkPlaceSafetey { get; set; }
 
-        public ICollection<DiagnosticCenter> center { get; set; }
+        public ICollection<DiagnosticCenter> Centers { get; set; }
         // add application user
 
     }

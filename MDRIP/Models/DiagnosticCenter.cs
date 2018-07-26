@@ -19,11 +19,11 @@ namespace MDRIP.Models
         public String PatientInfection { get; set; }
         public String AntibioticResistence { get; set; }
 
-        public ICollection<Infections> infections { get; set; }
-        public ICollection<ClinicalInformation> clinicalInfection { get; set; }
-        public ICollection<Bacteria> bacteria { get; set; }
-        public ICollection<MDR> mdr { get; set; }
-        public ICollection<ManagingInfections> manageinfections { get; set; }
-        public ICollection<EmergencyPreparation> emergencypreparation { get; set; }
+        public ICollection<Infections> Infections { get; set; }
+        public ICollection<ClinicalInformation> ClinicalInformation { get; set; }
+        public ICollection<Bacteria> Bacterias { get; set; }
+        public ICollection<MDR> MDRs { get; set; }
+        public ICollection<ManagingInfections> ManagingInfections { get; set; }
+        public ICollection<EmergencyPreparation> EmergencyPreparations { get; set; }
     }
 }

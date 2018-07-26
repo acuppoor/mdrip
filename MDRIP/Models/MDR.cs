@@ -18,9 +18,9 @@ namespace MDRIP.Models
         public String District { get; set; }
         public String History { get; set; }
 
-        public ICollection<DiagnosticCenter> center { get; set; }
-        public ICollection<Bacteria> bacteria { get; set; }
-        public ICollection<ClinicalInformation> clinicalInformation { get; set; }
-        public ICollection<Infections> infections { get; set; }
+        public ICollection<DiagnosticCenter> Centers { get; set; }
+        public ICollection<Bacteria> Bacterias { get; set; }
+        public ICollection<ClinicalInformation> ClinicalInformation { get; set; }
+        public ICollection<Infections> Infections { get; set; }
     }
 }
