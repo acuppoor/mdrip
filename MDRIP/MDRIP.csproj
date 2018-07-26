@@ -205,6 +205,12 @@
     <Reference Include="GeoJSON">
       <HintPath>..\packages\GeoJSON.1.1.0\lib\netstandard1.6\GeoJSON.dll</HintPath>
     </Reference>
+    <Reference Include="EPPlus">
+      <HintPath>..\packages\EPPlus.4.5.2.1\lib\net40\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Security" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
@@ -480,6 +486,7 @@
     <Content Include="Scripts\script\now-ui-kit.js" />
     <Content Include="Scripts\script\popper.min.js" />
     <Content Include="Scripts\script\raphael.min.js" />
+    <Content Include="Views\Visualisation\Upload.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
