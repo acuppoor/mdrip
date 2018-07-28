@@ -214,6 +214,9 @@
     <Reference Include="ExcelDataReader.DataSet">
       <HintPath>..\packages\ExcelDataReader.DataSet.3.4.0\lib\net45\ExcelDataReader.DataSet.dll</HintPath>
     </Reference>
+    <Reference Include="Csv">
+      <HintPath>..\packages\Csv.1.0.31\lib\net40\Csv.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
@@ -351,6 +354,9 @@
     <Compile Include="Models\Country.cs" />
     <Compile Include="Models\Region.cs" />
     <Compile Include="helper\ExcelReader.cs" />
+    <Compile Include="Models\ExcelRecord.cs" />
+    <Compile Include="helper\WritingFileToDb.cs" />
+    <Compile Include="Controllers\UtilsController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -391,9 +397,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
-    <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -416,7 +420,6 @@
     <Content Include="Views\Manage\SetPassword.cshtml" />
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\EmergencyPreparations\Create.cshtml" />
     <Content Include="Views\EmergencyPreparations\Delete.cshtml" />
     <Content Include="Views\EmergencyPreparations\Details.cshtml" />
@@ -461,11 +464,7 @@
     <Content Include="Views\Admin\CreateAccount.cshtml" />
     <Content Include="Views\Admin\CreateRole.cshtml" />
     <Content Include="Views\Visualisation\Choropleth.cshtml" />
-    <Content Include="Views\Visualisation\_ViewStart.cshtml" />
-    <Content Include="Views\Visualisation\_Layout.cshtml" />
-    <Content Include="Views\Visualisation\_LoginPartial.cshtml" />
     <Content Include="Views\Visualisation\Index.cshtml" />
-    <Content Include="Views\Visualisation\_Navbar.cshtml" />
     <Content Include="Content\style\mycss.css" />
     <Content Include="Content\style\now-ui-kit.css" />
     <Content Include="Content\style\bootstrap.min.css" />
@@ -490,13 +489,23 @@
     <Content Include="Scripts\script\now-ui-kit.js" />
     <Content Include="Scripts\script\popper.min.js" />
     <Content Include="Scripts\script\raphael.min.js" />
-    <Content Include="Views\Visualisation\Upload.cshtml" />
+    <Content Include="Views\Default_ViewStart\_ViewStart.cshtml" />
+    <Content Include="Views\Utils\Upload.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Default\_Layout.cshtml" />
+    <Content Include="Views\Shared\Default\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_Navbar.cshtml" />
+    <Content Include="Views\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\style\" />
     <Folder Include="Scripts\script %28copy%29\" />
     <Folder Include="Assets\" />
+    <Folder Include="Views\Default_ViewStart\" />
+    <Folder Include="Views\Utils\" />
+    <Folder Include="Views\Shared\Default\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
