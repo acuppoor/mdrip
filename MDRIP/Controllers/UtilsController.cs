@@ -12,7 +12,7 @@ namespace MDRIP.Controllers
     {
         public ActionResult Index()
         {
-            return View ();
+            return View ("Upload");
         }
 
         public ActionResult Upload()
