@@ -92,6 +92,15 @@
             ]
         };
         var map = new google.maps.Map(document.getElementById("map"), mapProp);
+        var image = {
+            url: '@Url.Content("~/Assets/map/bluecircle.png")',
+            size: new google.maps.Size(100, 100)
+        }
+        var beachMarker = new google.maps.Marker({
+            position: { lat: 30.3, lng: 69.3 },
+            map: map,
+            icon: image
+        });
     }
 @*var mymap = new L.Map("map", {center: [30.3, 69.3], zoom: 5})
         .addLayer(new L.TileLayer("https://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png"));
