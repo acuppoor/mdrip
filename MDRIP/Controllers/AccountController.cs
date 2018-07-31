@@ -77,9 +77,18 @@ namespace MDRIP.Controllers
             }
 
             var user = UserManager.FindByEmail(model.Email);
-            if (!UserManager.IsEmailConfirmed(user.Id) || !user.Activated)
+            if (!UserManager.IsEmailConfirmed(user.Id))
             {
-                ModelState.AddModelError("", "You need to confirm your email.");
+                ModelState.AddModelError("", "You need to confirm your email. An email with a confirmation link has been sent to your email address.");
+                string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>.<br/> Previous emails to confirm your account are no longer valid.");
+                return View("Login");
+            }
+
+            if (!user.Activated)
+            {
+                ModelState.AddModelError("", "Your account has not been activated yet. Please contact us if you think this is an error.");
                 return View("Login");
             }
 

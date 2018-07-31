@@ -16,7 +16,7 @@ namespace MDRIP.Controllers
 
         public ActionResult Map()
         {
-            return View();
+            return View("SpatioTemporal");
         }
 
         public ActionResult Choropleth()

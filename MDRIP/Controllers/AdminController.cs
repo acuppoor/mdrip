@@ -24,7 +24,7 @@ namespace MDRIP.Controllers
         public ActionResult Index()
         {
 
-            if ((!User.Identity.IsAuthenticated) || (User.Identity.IsAuthenticated && !IsAdminUser()))
+            if (!CheckPermission())
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -38,14 +38,17 @@ namespace MDRIP.Controllers
             });
         }
 
-        public Boolean IsAdminUser()
-        {
+        public bool CheckPermission() {
+            // returns true if the logged in user is admin, is authenticated, is activated and is confirmed
             if (User.Identity.IsAuthenticated)
             {
                 var user = User.Identity;
                 var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
                 var s = UserManager.GetRoles(user.GetUserId());
-                if (s[0].ToString() == "Admin")
+                var appUser = UserManager.FindById(User.Identity.GetUserId());
+                if (!appUser.Activated || !appUser.EmailConfirmed) {
+                    return false;
+                } else if (s[0].ToString() == "Admin")
                 {
                     return true;
                 }
@@ -56,10 +59,37 @@ namespace MDRIP.Controllers
             }
             return false;
         }
+        
+        public ActionResult ToggleActivation(string id)
+        {
+            if (!CheckPermission() )
+            {
+                return Json("Failure", JsonRequestBehavior.AllowGet);
+            }
+            try
+            {
+                var manager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+
+                if (manager == null)
+                {
+                    var store = new UserStore<ApplicationUser>(context);
+                    manager = (ApplicationUserManager)new UserManager<ApplicationUser, string>(store);
+                }
+                var User = manager.FindById(id);
+                User.Activated = User.Activated == true ? false : true;
+                manager.Update(User);
+
+                return Json("Success", JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e) {
+                return Json("Failure", JsonRequestBehavior.AllowGet);
+            }
+            
+        }
 
         public ActionResult CreateRole()
         {
-            if ((!User.Identity.IsAuthenticated) || (User.Identity.IsAuthenticated && !IsAdminUser()))
+            if (!CheckPermission())
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -71,7 +101,7 @@ namespace MDRIP.Controllers
         [HttpPost]
         public ActionResult CreateRole(IdentityRole Role)
         {
-            if ((!User.Identity.IsAuthenticated) || (User.Identity.IsAuthenticated && !IsAdminUser()))
+            if (!CheckPermission())
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -83,7 +113,7 @@ namespace MDRIP.Controllers
 
         public ActionResult CreateAccount()
         {
-            if ((!User.Identity.IsAuthenticated) || (User.Identity.IsAuthenticated && !IsAdminUser()))
+            if (!CheckPermission())
             {
                 return RedirectToAction("Index", "Home");
             }

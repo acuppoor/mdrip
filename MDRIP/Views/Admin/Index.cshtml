@@ -44,8 +44,16 @@
                 @foreach (var item in Model.Accounts)
                 {
                     <tr>
-                        <td style="width:100%; border:dotted 1px;">
+                        <td style="width:50%; border:dotted 1px;">
                             @item.Email
+                        </td>
+                        <td>
+                            @if (item.Activated)
+                            {               
+                                <a href="@Url.Action("ToggleActivation", "Admin")?id=@item.Id">Activated. Click to deactivate.</a>
+                            } else {
+                                <a href="@Url.Action("ToggleActivation", "Admin")?id=@item.Id">Deactivated. Click to deactivate.</a>                           
+                            }
                         </td>
                     </tr>}
             </table>
@@ -54,4 +62,4 @@
             <h3>   @Html.ActionLink("Click to Create New Account", "CreateAccount", "Admin") </h3>
         </td>
     </tr>
-</table> 
+</table>
