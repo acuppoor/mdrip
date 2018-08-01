@@ -59,13 +59,14 @@ namespace MDRIP.Controllers
             }
             return false;
         }
-        
+
         public ActionResult ToggleActivation(string id)
         {
-            if (!CheckPermission() )
+            if (!CheckPermission() || id == User.Identity.GetUserId())
             {
                 return Json("Failure", JsonRequestBehavior.AllowGet);
             }
+            
             try
             {
                 var manager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();

@@ -77,6 +77,12 @@ namespace MDRIP.Controllers
             }
 
             var user = UserManager.FindByEmail(model.Email);
+
+            if (user == null) {
+                ModelState.AddModelError("", "No such account. Please Register.");
+                return View("Login");
+            }
+
             if (!UserManager.IsEmailConfirmed(user.Id))
             {
                 ModelState.AddModelError("", "You need to confirm your email. An email with a confirmation link has been sent to your email address.");

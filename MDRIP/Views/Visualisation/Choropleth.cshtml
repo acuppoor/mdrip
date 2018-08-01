@@ -2,54 +2,107 @@
     ViewBag.Title = "Map Visualisation";
 }
 
-<div class="jumbotron">
-    <h1>Choropleth Visualisation</h1>
+<div id="map" class="test-test"></div>
+<div class="floatingdiv">
+    <button id="searchButton"><span class="glyphicon glyphicon-search"></span></button>
 </div>
 
-<h4>
-    <div class="row">
-        <div class="col-md-3">
-            Placeholder for Disease/Bacteria
-        </div>
-
-        <div class="col-md-3">
-            Placeholder for Time-Span
-        </div>
-
-        <div class="col-md-3">
-            Placeholder for Region selection
-        </div>
-
-        <div class="col-md-3">
-            <button>Update Map</button>
+<div id="testmodal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="">
+                <div>
+                    <span class="progress-badge bold makewhite">Infection/Bacteria:</span>
+                    <input type="text" class="form-control bold makewhite" value="Amoxilin">
+                </div>
+                <div>
+                    <span class="progress-badge bold makewhite">Region:</span>
+                    <input type="text" class="form-control bold makewhite" value="Islamabad">
+                </div>
+                <div>
+                    <span class="progress-badge bold makewhite">From:</span>
+                    <input type="text" class="form-control date-picker bold makewhite" value="01/01/2018" data-datepicker-color="primary">
+                </div>
+                <div>
+                    <span class="progress-badge bold makewhite">To:</span>
+                    <input type="text" class="form-control date-picker bold makewhite" value="01/01/2018" data-datepicker-color="primary">
+                </div>
+            </div>
         </div>
     </div>
-</h4>
+</div>
 
-<div id="mapid" style="height:500px;"></div>
+<style>
+    .makewhite {
+        color: black;
+    }
 
- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
-   integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
-   crossorigin=""/>
-<script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
-integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
-crossorigin=""></script>
+    .floatingdiv {
+        position: absolute;
+        bottom: 128px;
+        height: 30px;
+        width: 30px;
+        z-index: 99;
+        right: 10px;
+        background-color: white;
+        opacity: 1
+    }
+</style>
 
-<script>
-
-var mapboxAccessToken = "pk.eyJ1IjoiYWN1cHBvb3IiLCJhIjoiY2pqdG02bzNjMm50NjN2cnM1NXhiZXRhayJ9.oLeqk1di6FEvm4B2sge4tg";
-var map = L.map('mapid').setView([30.3, 69.3], 5);
-
-L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + mapboxAccessToken, {
-    id: 'mapbox.light'
-}).addTo(map);
-
-</script>
-
-
-
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.1.0/topojson.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+<script>
+    function myMap() {
+        var mapProp = {
+            center: new google.maps.LatLng(30.3, 69.3),
+            zoom: 5.5,
+            styles: [
+                {
+                    "featureType": "administrative",
+                    "elementType": "geometry",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "poi",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road",
+                    "elementType": "labels.icon",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "transit",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                }
+            ]
+        };
+        var map = new google.maps.Map(document.getElementById("map"), mapProp);
+        map.data.loadGeoJson('@Url.Content("~/Assets/map/pak.json")');
+
+        $("#searchButton").click( function () {
+            $('#testmodal').modal({
+                show: true
+            });
+        });
+    }
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDb6BqMVbPU5a6zxYg88S7AQcfoPbkhEaU&callback=myMap"></script>

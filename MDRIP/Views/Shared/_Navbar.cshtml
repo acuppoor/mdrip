@@ -21,8 +21,17 @@
                 </li>
                 <li class="nav-item nav-item-newsize">
                     <a class="nav-link btn btn-neutral btn-primary btn-simple btn-round bold" href="@Url.Action("Map","Visualisation")">
-                        <i class="fa fa-fw fa-dashboard"></i>
                         <p>Spatio Temporal</p>
+                    </a>
+                </li>
+                <li class="nav-item nav-item-newsize">
+                    <a class="nav-link btn btn-neutral btn-primary btn-simple btn-round bold" href="@Url.Action("ScatterPlot","Visualisation")">
+                        <p>Scatter Plot</p>
+                    </a>
+                </li>
+                <li class="nav-item nav-item-newsize">
+                    <a class="nav-link btn btn-neutral btn-primary btn-simple btn-round bold" href="@Url.Action("Choropleth","Visualisation")">
+                        <p>Choropleth</p>
                     </a>
                 </li>
                 @if (User.IsInRole("Admin"))

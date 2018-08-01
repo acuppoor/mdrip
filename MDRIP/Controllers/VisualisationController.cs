@@ -23,5 +23,10 @@ namespace MDRIP.Controllers
         {
             return View();
         }
+
+        public ActionResult ScatterPlot()
+        {
+            return View();
+        }
     }
 }
