@@ -100,12 +100,11 @@
             infowindow.setContent("<div style='width:150px; text-align: center;'>" + "Test" + "</div>");
 
             var coordOne = event.feature.getGeometry().getAt(0).getAt(0).getAt(0);
-            var coordTwo = event.feature.getGeometry().getAt(0).getAt(0).getAt(2);
             var newLat = (coordOne.lat() + event.latLng.lat()) / 2;
             var newLng = (coordOne.lng() + event.latLng.lng()) / 2;
             var newCoord = new google.maps.LatLng(newLat, newLng);
 
-            infowindow.setPosition(newCoord);
+            infowindow.setPosition(event.latLng);
             infowindow.setOptions({ pixelOffset: new google.maps.Size(0,0) });
             infowindow.open(map);
         }); 
