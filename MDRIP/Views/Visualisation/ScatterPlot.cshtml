@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Dashboard";
+    ViewBag.Title = "Scatter Plot";
 }
 
 <div class="row alert alert-danger">
@@ -8,29 +8,30 @@
     </div>
 </div>
 <hr/>
+<div class="fullscreen">
 <div class="row">
     <div class="col-md-12">
         <div class="small-box bg-light">
             @*<h6>Scatter Plot</h6>
             <hr/>*@
             <div class="row inner">
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <span class="progress-badge">Name of Infection (Select up to 10):</span>
-                    <input type="text" value="Helicobacter Pylori" placeholder="Name" class="form-control">
-                </div>
-                <div class="col-md-2">
-                    <span class="progress-badge">Region (Select up to 10):</span>
-                    <input type="text" value="Helicobacter Pylori" placeholder="Name" class="form-control">
+                    <input type="text" value="Some infections caused by some bacteria" placeholder="Name" class="form-control">
                 </div>
                 <div class="col-md-3">
+                    <span class="progress-badge">Region (Select up to 10):</span>
+                    <input type="text" value="Region 1, Region 2, Region 3, Region 4, Region 5" placeholder="Name" class="form-control">
+                </div>
+                <div class="col-md-2">
                     <span class="progress-badge">From:</span>
                     <input type="text" class="form-control date-picker" value="01/01/@DateTime.Now.Year" data-datepicker-color="primary">
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <span class="progress-badge">To:</span>
                     <input type="text" class="form-control date-picker" value="@DateTime.Now.Day/@DateTime.Now.Month/@DateTime.Now.Year" data-datepicker-color="primary">
                 </div>
-                <div class="col-md-2 justify-content-center">
+                <div class="col-md-2">
                     <span class="progress-badge">&nbsp;</span>
                     <button class="btn btn-primary btn-round" type="button" style="width:100%">
                         Submit
@@ -41,14 +42,16 @@
     </div>
 </div>
 
-<div class="row span">
+<div id="myDiv" class="fullscreen myDiv"></div>
+</div>
+@*<div class="row span">
     <div class="col-md-12" >
         <div class="small-box bg-light">
             <div class="myDiv" id="myDiv"></div>
 
         </div>
     </div>
-</div>
+</div>*@
 
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <script>

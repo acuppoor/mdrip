@@ -1,8 +1,8 @@
 ﻿@{
-    ViewBag.Title = "Map Visualisation";
+    ViewBag.Title = "Choropleth";
 }
 
-<div id="map" class="test-test"></div>
+<div id="map" class="fullscreen"></div>
 <div class="floatingdiv">
     <button id="searchButton"><span class="glyphicon glyphicon-search"></span></button>
 </div>
@@ -95,7 +95,14 @@
             ]
         };
         var map = new google.maps.Map(document.getElementById("map"), mapProp);
-        map.data.loadGeoJson('@Url.Content("~/Assets/map/pak.json")');
+        var infowindow = new google.maps.InfoWindow();
+        map.data.addListener('mouseover', function (event) {
+            infowindow.setContent("<div style='width:150px; text-align: center;'>" + "Test" + "</div>");
+            infowindow.setPosition(event.feature.getGeometry().getAt(1).get(0).getAt(0).getAt(0));
+            infowindow.setOptions({ pixelOffset: new google.maps.Size(0, -30) });
+            infowindow.open(map);
+        }); 
+        map.data.loadGeoJson('@Url.Content("~/Assets/map/pakistan.json")');
 
         $("#searchButton").click( function () {
             $('#testmodal').modal({
