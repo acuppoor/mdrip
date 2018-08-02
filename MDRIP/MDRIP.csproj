@@ -334,6 +334,10 @@
     <Compile Include="Migrations\201807171640134_InitialCreate.Designer.cs">
       <DependentUpon>201807171640134_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808021029018_Strain.cs" />
+    <Compile Include="Migrations\201808021029018_Strain.Designer.cs">
+      <DependentUpon>201808021029018_Strain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ViewModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -519,6 +523,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201807171640134_InitialCreate.resx">
       <DependentUpon>201807171640134_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808021029018_Strain.resx">
+      <DependentUpon>201808021029018_Strain.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

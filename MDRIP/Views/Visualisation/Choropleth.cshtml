@@ -98,8 +98,15 @@
         var infowindow = new google.maps.InfoWindow();
         map.data.addListener('mouseover', function (event) {
             infowindow.setContent("<div style='width:150px; text-align: center;'>" + "Test" + "</div>");
-            infowindow.setPosition(event.feature.getGeometry().getAt(1).get(0).getAt(0).getAt(0));
-            infowindow.setOptions({ pixelOffset: new google.maps.Size(0, -30) });
+
+            var coordOne = event.feature.getGeometry().getAt(0).getAt(0).getAt(0);
+            var coordTwo = event.feature.getGeometry().getAt(0).getAt(0).getAt(2);
+            var newLat = (coordOne.lat() + event.latLng.lat()) / 2;
+            var newLng = (coordOne.lng() + event.latLng.lng()) / 2;
+            var newCoord = new google.maps.LatLng(newLat, newLng);
+
+            infowindow.setPosition(newCoord);
+            infowindow.setOptions({ pixelOffset: new google.maps.Size(0,0) });
             infowindow.open(map);
         }); 
         map.data.loadGeoJson('@Url.Content("~/Assets/map/pakistan.json")');
