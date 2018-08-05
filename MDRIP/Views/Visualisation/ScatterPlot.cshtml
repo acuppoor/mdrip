@@ -2,9 +2,30 @@
     ViewBag.Title = "Scatter Plot";
 }
 
-<div class="row alert alert-danger" style="margin-top:65px;">
-    <div class="col-md-12 bold">
-        Placeholder for alerts
+
+
+<div class="row alert alert-info" style="margin-top:65px;">
+    <div class="col-md-11 bold">
+        <span class="badge badge-danger selectedfromresult">Infection 1</span>
+        <span class="badge badge-danger selectedfromresult">Infection 2</span>
+        <span class="badge badge-neutral selectedfromresult">Infection 3</span>
+        <span class="badge badge-danger selectedfromresult">Infection 4</span>
+        <span class="badge badge-danger selectedfromresult">Infection 5</span>
+        <span class="">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <span class="badge badge-neutral selectedfromresult">Region 1</span>
+        <span class="badge badge-neutral selectedfromresult">Region 2</span>
+        <span class="badge badge-neutral selectedfromresult">Region 3</span>
+        <span class="badge badge-neutral selectedfromresult">Region 4</span>
+        <span class="badge badge-neutral selectedfromresult">Region 5</span>
+    </div>
+    <div class="col-md-1" style="height:20px">
+        <ul class="nav nav-pills nav-pills-primary nav-pills-just-icons" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#link" role="tablist">
+                    <i class="fa fa-refresh"></i>
+                </a>
+            </li>
+        </ul>
     </div>
 </div>
 <div class="test-border sidenav">
@@ -42,23 +63,6 @@
                 </tbody>
             </table>
         </div>
-        <span class="progress-badge">Selected:</span>
-        <div style="overflow: scroll; height: 100px; width: 300px">
-            <table>
-                <thead>
-                <tr>
-                    <th><div label="Column 1"></div></th>
-                    <th><div label="Column 1"></div></th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr><td><input type="checkbox" checked="true"></input></td><td>Infection 3</td></tr>
-                <tr><td><input type="checkbox" checked="true"></input></td><td>Infection 6</td></tr>
-                <tr><td><input type="checkbox" checked="true"></input></td><td>Infection 8</td></tr>
-                <tr><td><input type="checkbox" checked="true"></input></td><td>Infection 9</td></tr>
-                </tbody>
-            </table>
-        </div>
         
         <span class="progress-badge">Country:</span>
         <select class="form-control">
@@ -90,22 +94,6 @@
                 </tbody>
             </table>
         </div>
-        <span class="progress-badge">Selected:</span>
-        <div style="overflow: scroll; height: 100px; width: 300px">
-            <table>
-                <thead>
-                <tr>
-                    <th><div label="Column 1"></div></th>
-                    <th><div label="Column 1"></div></th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr><td><input type="checkbox" checked="true"></input></td><td>Islamabad</td></tr>
-                <tr><td><input type="checkbox" checked="true"></input></td><td>Punjab</td></tr>
-                <tr><td><input type="checkbox" checked="true"></input></td><td>Another Region</td></tr>
-                </tbody>
-            </table>
-        </div>
         
         <span class="progress-badge">From:</span>
         <input type="text" class="form-control date-picker" value="01/01/@DateTime.Now.Year" data-datepicker-color="primary">
@@ -116,7 +104,7 @@
     </div>
 </div>
 
-<div class="row" style="height: 500px">
+<div class="row remainingheight" >
     <div class="col-md-12" id="visualisation">
     </div>
 </div>
@@ -139,7 +127,57 @@
 
 <script>
 
-
+    $(document).ready(function() {
+        var selectedItem = '@ViewBag.Id';
+        switch (selectedItem) {
+        case "piechart":
+            selectedItem = "Pie Chart";
+            donut();
+            break;
+        case "barchart":
+            selectedItem = "Bar Chart";
+            barchart();
+            break;
+        case "scatter":
+            selectedItem = "Scatter Plot";
+            scatter();
+            break;
+        case "linegraph":
+            selectedItem = "Line Graph";
+            lineGraph();
+            break;
+        default:
+            selectedItem = "Pie Chart";
+            break;
+        }
+        
+        testfunction();
+        
+        // fix below
+        
+        var select = $('#chartSelection');
+        
+        for (var i = 0; i < select.options.length; ++i) {
+            if (select.options[i].text === selectedItem)
+                select.options[i].selected = true;
+        }
+    });
+    
+    function testfunction() {
+        var items = $('.selectedfromresult');
+        
+        for (var i = 0; i < items.length; i++) {
+            items[i].addEventListener('click', function(event) {
+                var element = $(event.target);;
+                alert($(this));
+                alert(element);
+                element.classList.toggle("badge-danger");
+                $(this).classList.toggle("badge-neutral");
+            });
+        }
+    }
+    
+    
     $('#chartSelection').change(function() {
         var element = $('#chartSelection');
         var selected = element.val();

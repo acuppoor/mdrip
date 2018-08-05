@@ -24,8 +24,9 @@ namespace MDRIP.Controllers
             return View();
         }
 
-        public ActionResult ScatterPlot()
+        public ActionResult ScatterPlot(string id)
         {
+            ViewBag.Id = id;
             return View();
         }
     }
