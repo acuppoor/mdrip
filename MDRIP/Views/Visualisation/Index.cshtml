@@ -15,8 +15,9 @@
             <i class="fa fa-expand"></i>
             </h6>
             <hr/>
-            <div id="geographicmap" class="scatterplot viscomponent"></div>
-
+            <a href="@Url.Action("Map","Visualisation")">
+                <div id="geographicmap" class="scatterplot viscomponent"></div>
+            </a>
             <a href="#" class="small-box-footer bg-dark">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div>
@@ -24,8 +25,9 @@
         <div class="small-box bg-light">
             <h6>Choropleth Map</h6>
             <hr/>
+            <a href="@Url.Action("Choropleth","Visualisation")">
             <div id="choroplethmap" class="scatterplot viscomponent"></div>
-
+            </a>
             <a href="#" class="small-box-footer bg-dark">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div>
@@ -33,8 +35,9 @@
         <div class="small-box bg-light">
             <h6>Scatter Plot</h6>
             <hr/>
+            <a href="@Url.Action("ScatterPlot","Visualisation")">
             <div id="scatterplot" class="scatterplot viscomponent"></div>
-
+            </a>
             <a href="#" class="small-box-footer bg-dark">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div>

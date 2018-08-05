@@ -2,91 +2,258 @@
     ViewBag.Title = "Scatter Plot";
 }
 
-<div class="row alert alert-danger">
+<div class="row alert alert-danger" style="margin-top:65px;">
     <div class="col-md-12 bold">
         Placeholder for alerts
     </div>
 </div>
-<hr/>
-<div class="fullscreen">
-<div class="row">
-    <div class="col-md-12">
-        <div class="small-box bg-light">
-            @*<h6>Scatter Plot</h6>
-            <hr/>*@
-            <div class="row inner">
-                <div class="col-md-3">
-                    <span class="progress-badge">Name of Infection (Select up to 10):</span>
-                    <input type="text" value="Some infections caused by some bacteria" placeholder="Name" class="form-control">
-                </div>
-                <div class="col-md-3">
-                    <span class="progress-badge">Region (Select up to 10):</span>
-                    <input type="text" value="Region 1, Region 2, Region 3, Region 4, Region 5" placeholder="Name" class="form-control">
-                </div>
-                <div class="col-md-2">
-                    <span class="progress-badge">From:</span>
-                    <input type="text" class="form-control date-picker" value="01/01/@DateTime.Now.Year" data-datepicker-color="primary">
-                </div>
-                <div class="col-md-2">
-                    <span class="progress-badge">To:</span>
-                    <input type="text" class="form-control date-picker" value="@DateTime.Now.Day/@DateTime.Now.Month/@DateTime.Now.Year" data-datepicker-color="primary">
-                </div>
-                <div class="col-md-2">
-                    <span class="progress-badge">&nbsp;</span>
-                    <button class="btn btn-primary btn-round" type="button" style="width:100%">
-                        Submit
-                    </button>
-                </div>
-            </div>
+<div class="test-border sidenav">
+    <p>Filters</p>
+    <select class="form-control" id="chartSelection">
+        <option>Select a Visualisation</option>
+        <option>Bar Chart</option>
+        <option>Line Graph</option>
+        <option>Pie Chart</option>
+        <option>Scatter Plot</option>
+    </select>
+    <div class="">
+        <span class="progress-badge">Infection:</span>
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Infection">
+            <span class="input-group-btn">
+                <button class="btn btn-primary btn-icon " type="button">Go!</button>
+            </span>
+        </div><!-- /input-group -->
+        <span class="progress-badge">Result:</span>
+        <div style="overflow: scroll; height: 100px; width: 300px">
+            <table>
+                <thead>
+                <tr>
+                    <th><div label="Column 1"></div></th>
+                    <th><div label="Column 1"></div></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr><td><input type="checkbox"></input></td><td>Infection 1</td></tr>
+                <tr><td><input type="checkbox"></input></td><td>Infection 2</td></tr>
+                <tr><td><input type="checkbox"></input></td><td>Infection 4</td></tr>
+                <tr><td><input type="checkbox"></input></td><td>Infection 5</td></tr>
+                <tr><td><input type="checkbox"></input></td><td>Infection 7</td></tr>
+                </tbody>
+            </table>
         </div>
+        <span class="progress-badge">Selected:</span>
+        <div style="overflow: scroll; height: 100px; width: 300px">
+            <table>
+                <thead>
+                <tr>
+                    <th><div label="Column 1"></div></th>
+                    <th><div label="Column 1"></div></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr><td><input type="checkbox" checked="true"></input></td><td>Infection 3</td></tr>
+                <tr><td><input type="checkbox" checked="true"></input></td><td>Infection 6</td></tr>
+                <tr><td><input type="checkbox" checked="true"></input></td><td>Infection 8</td></tr>
+                <tr><td><input type="checkbox" checked="true"></input></td><td>Infection 9</td></tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <span class="progress-badge">Country:</span>
+        <select class="form-control">
+            <option>Pakistan</option>
+        </select>
+        
+        <span class="progress-badge">Regions:</span>
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Infection">
+            <span class="input-group-btn">
+                <button class="btn btn-primary btn-icon " type="button">Go!</button>
+            </span>
+        </div><!-- /input-group -->
+        <span class="progress-badge">Result:</span>
+        <div style="overflow: scroll; height: 100px; width: 300px">
+            <table>
+                <thead>
+                <tr>
+                    <th><div label="Column 1"></div></th>
+                    <th><div label="Column 1"></div></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr><td><input type="checkbox"></input></td><td>Region 1</td></tr>
+                <tr><td><input type="checkbox"></input></td><td>Region 2</td></tr>
+                <tr><td><input type="checkbox"></input></td><td>Region 3</td></tr>
+                <tr><td><input type="checkbox"></input></td><td>Region 4</td></tr>
+                <tr><td><input type="checkbox"></input></td><td>Region 5</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <span class="progress-badge">Selected:</span>
+        <div style="overflow: scroll; height: 100px; width: 300px">
+            <table>
+                <thead>
+                <tr>
+                    <th><div label="Column 1"></div></th>
+                    <th><div label="Column 1"></div></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr><td><input type="checkbox" checked="true"></input></td><td>Islamabad</td></tr>
+                <tr><td><input type="checkbox" checked="true"></input></td><td>Punjab</td></tr>
+                <tr><td><input type="checkbox" checked="true"></input></td><td>Another Region</td></tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <span class="progress-badge">From:</span>
+        <input type="text" class="form-control date-picker" value="01/01/@DateTime.Now.Year" data-datepicker-color="primary">
+        
+        <span class="progress-badge">To:</span>
+        <input type="text" class="form-control date-picker" value="@DateTime.Now.Day/@DateTime.Now.Month/@DateTime.Now.Year" data-datepicker-color="primary">
+
     </div>
 </div>
 
-<div id="myDiv" class="fullscreen myDiv"></div>
-</div>
-@*<div class="row span">
-    <div class="col-md-12" >
-        <div class="small-box bg-light">
-            <div class="myDiv" id="myDiv"></div>
-
-        </div>
+<div class="row" style="height: 500px">
+    <div class="col-md-12" id="visualisation">
     </div>
-</div>*@
+</div>
 
+
+<style>
+    .wrapper{
+        margin-left:170px;
+        overflow-x: hidden;
+    }
+</style>
+
+<script
+    src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+    crossorigin="anonymous"></script>
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="~/Scripts/script/morris.min.js"></script>
+<script src="~/Scripts/script/raphael.min.js"></script>
+
 <script>
-    var regions = ['Region1', 'Region2', 'Region3', 'Region4', 'Region5', 'Region6']
-    var trace1 = {
-        x: regions,
-        y: [1, 2, 3,4 ,5 ],
-        mode: 'markers',
-        type: 'scatter',
-        name: 'Infection A',
-        text: ['A-1', 'A-2', 'A-3', 'A-4', 'A-5'],
-        marker: { size: 12 }
-    };
 
-    var trace2 = {
-        x: regions,
-        y: [1, 3, 4, 5, 6],
-        mode: 'markers',
-        type: 'scatter',
-        name: 'Infection B',
-        text: ['B-a', 'B-b', 'B-c', 'B-d', 'B-e'],
-        marker: { size: 12 }
-    };
 
-    var data = [ trace1, trace2];
+    $('#chartSelection').change(function() {
+        var element = $('#chartSelection');
+        var selected = element.val();
+        resetVisualisation();
+        switch (selected) {
+        case "Pie Chart":
+            donut();
+            break;
+        case "Bar Chart":
+            barchart();
+            break;
+        case "Scatter Plot":
+            scatter();
+            break;
+        case "Line Graph":
+            lineGraph();
+            break;
+        default:
+        }
+    });
+    
+    function resetVisualisation() {
+        $('#visualisation').innerHTML = "";
+        $("#visualisation").html("");
+    }
 
-    var layout = {
-      xaxis: {
-        range: [ -1, 6 ]
-      },
-      yaxis: {
-        range: [0, 8]
-      },
-      title:'Prevalence Vs Regions for {Infection A, Infection B}'
-    };
+    function lineGraph() {
+        Morris.Line({
+            element: 'visualisation',
+            data: [
+                { x: '2018-01', y: 100 },
+                { x: '2018-02', y: 0 },
+                { x: '2018-03', y: 0 },
+                { x: '2018-04', y: 345 },
+                { x: '2018-05', y: 0 },
+                { x: '2018-06', y: 200 },
+                { x: '2018-07', y: 50 },
+                { x: '2018-08', y: 0 }
+            ],
+            xkey: 'x',
+            ykeys: ['y'],
+            smooth: false,
+            hideHover: 'auto',
+            axes: true,
+            grid: true,
+            labels: ['Prevalence']
+        });
+    }
 
-    Plotly.newPlot('myDiv', data, layout);
+    function donut() {
+        Morris.Donut({
+            element: 'visualisation',
+            data: [
+                { label: "Download Sales", value: 12 },
+                { label: "In-Store Sales", value: 30 },
+                { label: "Mail-Order Sales", value: 20 }
+            ]
+        });
+    }
+
+    function scatter() {
+        var regions = ['Region1', 'Region2', 'Region3', 'Region4', 'Region5', 'Region6'];
+        var trace1 = {
+            x: regions,
+            y: [1, 2, 3, 4, 5],
+            mode: 'markers',
+            type: 'scatter',
+            name: 'Infection A',
+            text: ['A-1', 'A-2', 'A-3', 'A-4', 'A-5'],
+            marker: { size: 12 }
+        };
+
+        var trace2 = {
+            x: regions,
+            y: [1, 3, 4, 5, 6],
+            mode: 'markers',
+            type: 'scatter',
+            name: 'Infection B',
+            text: ['B-a', 'B-b', 'B-c', 'B-d', 'B-e'],
+            marker: { size: 12 }
+        };
+
+        var data = [trace1, trace2];
+
+        var layout = {
+            xaxis: {
+                range: [-1, 6]
+            },
+            yaxis: {
+                range: [0, 8]
+            },
+            title: 'Prevalence at Different Regions'
+        };
+
+        Plotly.newPlot('visualisation', data, layout);
+    }
+
+    function barchart() {
+        Morris.Bar({
+            element: 'visualisation',
+            data: [
+                { y: 'Islamabad', a: 100},
+                { y: 'Region 2', a: 75},
+                { y: 'Region 3', a: 50},
+                { y: 'Region 4', a: 75},
+                { y: 'Region 5', a: 50},
+                { y: 'Region 6', a: 75},
+                { y: 'Region 7', a: 100 }
+            ],
+            xkey: 'y',
+            ykeys: ['a'],
+            hideHover: 'auto',
+            labels: ['Prevalence']
+        });
+    }
+
 </script>
