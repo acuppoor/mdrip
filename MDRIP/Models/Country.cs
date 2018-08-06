@@ -11,6 +11,8 @@ namespace MDRIP.Models
 
         [Required]
         public string Name { get; set; }
-        
+
+        public ICollection<Region> Regions { get; set; }
+
     }
 }

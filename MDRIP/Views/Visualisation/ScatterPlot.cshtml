@@ -1,22 +1,26 @@
 ﻿@{
-    ViewBag.Title = "Scatter Plot";
+    ViewBag.Title = "Visualising";
 }
 
 
 
 <div class="row alert alert-info" style="margin-top:65px;">
     <div class="col-md-11 bold">
-        <span class="badge badge-danger selectedfromresult">Infection 1</span>
-        <span class="badge badge-danger selectedfromresult">Infection 2</span>
-        <span class="badge badge-neutral selectedfromresult">Infection 3</span>
-        <span class="badge badge-danger selectedfromresult">Infection 4</span>
-        <span class="badge badge-danger selectedfromresult">Infection 5</span>
-        <span class="">&nbsp;&nbsp;&nbsp;&nbsp;</span>
-        <span class="badge badge-neutral selectedfromresult">Region 1</span>
-        <span class="badge badge-neutral selectedfromresult">Region 2</span>
-        <span class="badge badge-neutral selectedfromresult">Region 3</span>
-        <span class="badge badge-neutral selectedfromresult">Region 4</span>
-        <span class="badge badge-neutral selectedfromresult">Region 5</span>
+        <div id="infections_div" style="float:left">
+            <span class="badge badge-danger selectedInfection">Infection 1</span>
+            <span class="badge badge-danger selectedInfection">Infection 2</span>
+            <span class="badge badge-neutral selectedInfection">Infection 3</span>
+            <span class="badge badge-danger selectedInfection">Infection 4</span>
+            <span class="badge badge-danger selectedInfection">Infection 5</span>
+        </div>
+        <div style="float:left"><span class="">&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+        <div id="regions_div" style="float:left">
+            <span class="badge badge-neutral selectedRegion">Region 1</span>
+            <span class="badge badge-neutral selectedRegion">Region 2</span>
+            <span class="badge badge-neutral selectedRegion">Region 3</span>
+            <span class="badge badge-neutral selectedRegion">Region 4</span>
+            <span class="badge badge-neutral selectedRegion">Region 5</span>
+        </div>
     </div>
     <div class="col-md-1" style="height:20px">
         <ul class="nav nav-pills nav-pills-primary nav-pills-just-icons" role="tablist">
@@ -42,7 +46,7 @@
         <div class="input-group">
             <input type="text" class="form-control" placeholder="Infection">
             <span class="input-group-btn">
-                <button class="btn btn-primary btn-icon " type="button">Go!</button>
+                <button class="btn btn-primary btn-icon " type="button"><i class="fa fa-search"></i></button>
             </span>
         </div><!-- /input-group -->
         <span class="progress-badge">Result:</span>
@@ -55,11 +59,11 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr><td><input type="checkbox"></input></td><td>Infection 1</td></tr>
-                <tr><td><input type="checkbox"></input></td><td>Infection 2</td></tr>
-                <tr><td><input type="checkbox"></input></td><td>Infection 4</td></tr>
-                <tr><td><input type="checkbox"></input></td><td>Infection 5</td></tr>
-                <tr><td><input type="checkbox"></input></td><td>Infection 7</td></tr>
+                <tr><td><input type="checkbox"></input></td><td class="infection_result_row" data-name="Infection 1">Infection 1</td></tr>
+                <tr><td><input type="checkbox"></input></td><td class="infection_result_row">Infection 2</td></tr>
+                <tr><td><input type="checkbox"></input></td><td class="infection_result_row">Infection 4</td></tr>
+                <tr><td><input type="checkbox"></input></td><td class="infection_result_row">Infection 5</td></tr>
+                <tr><td><input type="checkbox"></input></td><td class="infection_result_row">Infection 7</td></tr>
                 </tbody>
             </table>
         </div>
@@ -73,7 +77,7 @@
         <div class="input-group">
             <input type="text" class="form-control" placeholder="Infection">
             <span class="input-group-btn">
-                <button class="btn btn-primary btn-icon " type="button">Go!</button>
+                <button class="btn btn-primary btn-icon " type="button"><i class="fa fa-search"></i></button>
             </span>
         </div><!-- /input-group -->
         <span class="progress-badge">Result:</span>
@@ -86,11 +90,11 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr><td><input type="checkbox"></input></td><td>Region 1</td></tr>
-                <tr><td><input type="checkbox"></input></td><td>Region 2</td></tr>
-                <tr><td><input type="checkbox"></input></td><td>Region 3</td></tr>
-                <tr><td><input type="checkbox"></input></td><td>Region 4</td></tr>
-                <tr><td><input type="checkbox"></input></td><td>Region 5</td></tr>
+                <tr><td><input type="checkbox"></input></td><td class="region_result_row">Region 1</td></tr>
+                <tr><td><input type="checkbox"></input></td><td class="region_result_row">Region 2</td></tr>
+                <tr><td><input type="checkbox"></input></td><td class="region_result_row">Region 3</td></tr>
+                <tr><td><input type="checkbox"></input></td><td class="region_result_row">Region 4</td></tr>
+                <tr><td><input type="checkbox"></input></td><td class="region_result_row">Region 5</td></tr>
                 </tbody>
             </table>
         </div>
@@ -117,10 +121,9 @@
     }
 </style>
 
-<script
-    src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
-    crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <script src="~/Scripts/script/morris.min.js"></script>
 <script src="~/Scripts/script/raphael.min.js"></script>
@@ -147,32 +150,54 @@
             lineGraph();
             break;
         default:
-            selectedItem = "Pie Chart";
             break;
         }
-        
-        testfunction();
-        
-        // fix below
-        
-        var select = $('#chartSelection');
+
+        var select = document.getElementById('chartSelection');
         
         for (var i = 0; i < select.options.length; ++i) {
             if (select.options[i].text === selectedItem)
                 select.options[i].selected = true;
         }
+
+        toggleInfectionsAndRegions("selectedRegion");
+        toggleInfectionsAndRegions("selectedInfection");
+
+        addListenerToResults();
+
     });
-    
-    function testfunction() {
-        var items = $('.selectedfromresult');
+
+    function addListenerToResults() {
+        var infectionResults = document.getElementsByClassName('infection_result_row');
+        for (var i = 0; i < infectionResults.length; i++) {
+            var item = infectionResults[i];
+            item.addEventListener('click', function () {
+                document.getElementById('infections_div').innerHTML += " <span class='badge badge-danger selectedInfection'>" + $(this).attr('data-name') + "</span> ";
+                toggleInfectionsAndRegions("selectedInfection");
+            });
+        }
+
+        var regionResults = document.getElementsByClassName('region_result_row');
+        for (var i = 0; i < regionResults.length; i++) {
+            var item = regionResults[i];
+            item.addEventListener('click', function () {
+                document.getElementById('regions_div').innerHTML += " <span class='badge badge-danger selectedRegion'>" + $(this).attr('data-name') + "</span> ";
+                toggleInfectionsAndRegions("selectedRegion");
+            });
+        }
         
+    }
+
+    function toggleInfectionsAndRegions(className) {
+        var items = document.getElementsByClassName(className);
+
+        if (items === null) {
+            items = $('.' + className);
+        }
         for (var i = 0; i < items.length; i++) {
             items[i].addEventListener('click', function(event) {
-                var element = $(event.target);;
-                alert($(this));
-                alert(element);
-                element.classList.toggle("badge-danger");
-                $(this).classList.toggle("badge-neutral");
+                $(this).toggleClass("badge-danger");
+                $(this).toggleClass("badge-neutral");
             });
         }
     }
@@ -231,9 +256,10 @@
         Morris.Donut({
             element: 'visualisation',
             data: [
-                { label: "Download Sales", value: 12 },
-                { label: "In-Store Sales", value: 30 },
-                { label: "Mail-Order Sales", value: 20 }
+                { label: "Infection 1", value: 12 },
+                { label: "Infection 2", value: 30 },
+                { label: "Infection 4", value: 20 },
+                { label: "Infection 5", value: 20 }
             ]
         });
     }
