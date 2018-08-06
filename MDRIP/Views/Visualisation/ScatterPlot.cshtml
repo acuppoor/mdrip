@@ -2,8 +2,6 @@
     ViewBag.Title = "Visualising";
 }
 
-
-
 <div class="row alert alert-info" style="margin-top:65px;">
     <div class="col-md-11 bold">
         <div id="infections_div" style="float:left">
@@ -37,6 +35,8 @@
     <select class="form-control" id="chartSelection">
         <option>Select a Visualisation</option>
         <option>Bar Chart</option>
+        <option>Choropleth Map</option>
+        <option>Geographic Map</option>
         <option>Line Graph</option>
         <option>Pie Chart</option>
         <option>Scatter Plot</option>
@@ -50,29 +50,22 @@
             </span>
         </div><!-- /input-group -->
         <span class="progress-badge">Result:</span>
-        <div style="overflow: scroll; height: 100px; width: 300px">
+        <div class="test-border" style="overflow-y: auto; overflow-x:none;height: 100px; width: 300px; background:grey">
             <table>
-                <thead>
-                <tr>
-                    <th><div label="Column 1"></div></th>
-                    <th><div label="Column 1"></div></th>
-                </tr>
-                </thead>
                 <tbody>
-                <tr><td><input type="checkbox"></input></td><td class="infection_result_row" data-name="Infection 1">Infection 1</td></tr>
-                <tr><td><input type="checkbox"></input></td><td class="infection_result_row">Infection 2</td></tr>
-                <tr><td><input type="checkbox"></input></td><td class="infection_result_row">Infection 4</td></tr>
-                <tr><td><input type="checkbox"></input></td><td class="infection_result_row">Infection 5</td></tr>
-                <tr><td><input type="checkbox"></input></td><td class="infection_result_row">Infection 7</td></tr>
+                    <tr><td class="infection_result_row" data-name="Infection 1">Infection 1</td></tr>
+                    <tr><td class="infection_result_row" data-name="Infection 2">Infection 2</td></tr>
+                    <tr><td class="infection_result_row" data-name="Infection 4">Infection 4</td></tr>
+                    <tr><td class="infection_result_row" data-name="Infection 5">Infection 5</td></tr>
+                    <tr><td class="infection_result_row" data-name="Infection 7">Infection 7</td></tr>
                 </tbody>
             </table>
         </div>
-        
         <span class="progress-badge">Country:</span>
         <select class="form-control">
             <option>Pakistan</option>
         </select>
-        
+
         <span class="progress-badge">Regions:</span>
         <div class="input-group">
             <input type="text" class="form-control" placeholder="Infection">
@@ -84,39 +77,39 @@
         <div style="overflow: scroll; height: 100px; width: 300px">
             <table>
                 <thead>
-                <tr>
-                    <th><div label="Column 1"></div></th>
-                    <th><div label="Column 1"></div></th>
-                </tr>
+                    <tr>
+                        <th><div label="Column 1"></div></th>
+                        <th><div label="Column 1"></div></th>
+                    </tr>
                 </thead>
                 <tbody>
-                <tr><td><input type="checkbox"></input></td><td class="region_result_row">Region 1</td></tr>
-                <tr><td><input type="checkbox"></input></td><td class="region_result_row">Region 2</td></tr>
-                <tr><td><input type="checkbox"></input></td><td class="region_result_row">Region 3</td></tr>
-                <tr><td><input type="checkbox"></input></td><td class="region_result_row">Region 4</td></tr>
-                <tr><td><input type="checkbox"></input></td><td class="region_result_row">Region 5</td></tr>
+                    <tr><td><input type="checkbox"></input></td><td class="region_result_row">Region 1</td></tr>
+                    <tr><td><input type="checkbox"></input></td><td class="region_result_row">Region 2</td></tr>
+                    <tr><td><input type="checkbox"></input></td><td class="region_result_row">Region 3</td></tr>
+                    <tr><td><input type="checkbox"></input></td><td class="region_result_row">Region 4</td></tr>
+                    <tr><td><input type="checkbox"></input></td><td class="region_result_row">Region 5</td></tr>
                 </tbody>
             </table>
         </div>
-        
+
         <span class="progress-badge">From:</span>
         <input type="text" class="form-control date-picker" value="01/01/@DateTime.Now.Year" data-datepicker-color="primary">
-        
+
         <span class="progress-badge">To:</span>
         <input type="text" class="form-control date-picker" value="@DateTime.Now.Day/@DateTime.Now.Month/@DateTime.Now.Year" data-datepicker-color="primary">
 
     </div>
 </div>
 
-<div class="row remainingheight" >
+<div class="row remainingheight">
     <div class="col-md-12" id="visualisation">
     </div>
 </div>
 
 
 <style>
-    .wrapper{
-        margin-left:170px;
+    .wrapper {
+        margin-left: 170px;
         overflow-x: hidden;
     }
 </style>
@@ -149,12 +142,17 @@
             selectedItem = "Line Graph";
             lineGraph();
             break;
+        case "choroplethmap":
+            selectedItem = "Choropleth Map";
+            choropleth();
+        case "geographicmap":
+            selectedItem = "Geographic Map";
+            geographicmap();
         default:
-            break;
         }
 
         var select = document.getElementById('chartSelection');
-        
+
         for (var i = 0; i < select.options.length; ++i) {
             if (select.options[i].text === selectedItem)
                 select.options[i].selected = true;
@@ -185,7 +183,7 @@
                 toggleInfectionsAndRegions("selectedRegion");
             });
         }
-        
+
     }
 
     function toggleInfectionsAndRegions(className) {
@@ -201,8 +199,8 @@
             });
         }
     }
-    
-    
+
+
     $('#chartSelection').change(function() {
         var element = $('#chartSelection');
         var selected = element.val();
@@ -220,13 +218,184 @@
         case "Line Graph":
             lineGraph();
             break;
+        case "Choropleth Map":
+            choropleth();
+            break;
+        case "Geographic Map":
+            geographicmap();
+            break;
         default:
         }
     });
-    
+
     function resetVisualisation() {
         $('#visualisation').innerHTML = "";
         $("#visualisation").html("");
+    }
+
+    function geographicmap() {
+        var mapProp = {
+            center: new google.maps.LatLng(30.3, 69.3),
+            zoom: 5,
+            styles: [
+                {
+                    "featureType": "administrative",
+                    "elementType": "geometry",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "poi",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road",
+                    "elementType": "labels.icon",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "transit",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                }
+            ]
+        };
+        var map = new google.maps.Map(document.getElementById("visualisation"), mapProp);
+
+        var image = {
+            url: '@Url.Content("~/Assets/map/icon.png")',
+            size: new google.maps.Size(15, 15)
+        }
+
+        var contentString = '<div id="content">' +
+            '<div id="siteNotice">' +
+            '</div>' +
+            '<h5 id="firstHeading" class="firstHeading">Toxin-medicated Diseases of S.Aureus S</h5><h6>Introduction of the infection</h6>'+
+            '<div id="bodyContent">' +
+            '<p><b>Prevalence: 125</b>,<br/>' +
+            '<b>Mortality: 35</b>,<br/>' +
+            '<b>Bateria: Staphylococcus Aureus (Anaerobic)</b>,<br/>' +
+            '<b>Infection: Toxin-medicated diseases of S.Aureus include food poisoning' +
+            'due to ingestion of enterotoxins, while toxic shock syndrome toxin 1 is responsible for toxic shock.,</b >,<br /></p>' +
+            '<p><table style="width:100%"> <tr> <td>'+
+                    'Timeline: June 2005 - September 2005<br /> </td> <td>'+
+                    'Affected People: <Gender> and <Age><br /> </td> </tr> <tr> <td> Strain: -- <br />' +
+            '    </td> <td> Taxonomy: --<br /> </td> </tr> <tr> <td> Morphology: --<br />  </td> <td> Virulence Factors: --<br />' +
+            '    </td> </tr> <tr> <td> Interaction with Organisms: -- <br /> </td> <td> Antibiotics: -- <br /> </td> </tr>'+
+            '<tr> <td> Treatments: -- <br /> </td>'+
+            '</tr></table></p>' +
+            '<p>Location: Military Hospital, Rawalpindi, Pakistan (<a href="#">Lat: 30.3, Long: 60.3</a>)</p>' +
+            '<a href="#">See References</p>' +
+            '</div>' +
+            '</div>';
+
+        var marker = new google.maps.Marker({
+            position: { lat: 30.3, lng: 69.3 },
+            map: map,
+            icon: image
+        });
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString,
+            maxWidth: 400
+        });
+        var isOpen = false;
+        var isClicked = false;
+
+        google.maps.event.addListener(infowindow, 'closeclick', function () {
+            isOpen = false;
+            isClicked = false;
+        });
+
+        marker.addListener('mouseover', function () {
+            if (!isClicked) {
+                infowindow.open(map, marker);
+                isOpen = true;
+            }
+        });
+        marker.addListener('mouseout', function () {
+            if (isOpen && !isClicked) {
+                isOpen = false;
+                infowindow.close();
+            }
+        });
+
+        marker.addListener('click', function () {
+            isOpen = false;
+            isClicked = true;
+            infowindow.open(map, marker);
+        });
+    }
+
+    function choropleth() {
+        var mapProp = {
+            center: new google.maps.LatLng(30.3, 69.3),
+            zoom: 5,
+            styles: [
+                {
+                    "featureType": "administrative",
+                    "elementType": "geometry",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "poi",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road",
+                    "elementType": "labels.icon",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "transit",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                }
+            ]
+        };
+        var map = new google.maps.Map(document.getElementById("visualisation"), mapProp);
+        var infowindow = new google.maps.InfoWindow();
+        map.data.addListener('mouseover', function (event) {
+            infowindow.setContent("<div style='width:150px; text-align: center;'>" + "Test" + "</div>");
+
+            var coordOne = event.feature.getGeometry().getAt(0).getAt(0).getAt(0);
+            var newLat = (coordOne.lat() + event.latLng.lat()) / 2;
+            var newLng = (coordOne.lng() + event.latLng.lng()) / 2;
+            var newCoord = new google.maps.LatLng(newLat, newLng);
+
+            infowindow.setPosition(event.latLng);
+            infowindow.setOptions({ pixelOffset: new google.maps.Size(0,0) });
+            infowindow.open(map);
+        });
+        map.data.loadGeoJson('@Url.Content("~/Assets/map/pakistan.json")');
     }
 
     function lineGraph() {
@@ -321,3 +490,4 @@
     }
 
 </script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDb6BqMVbPU5a6zxYg88S7AQcfoPbkhEaU"></script>
