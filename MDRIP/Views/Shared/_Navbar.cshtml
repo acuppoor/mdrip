@@ -20,18 +20,8 @@
                     </a>
                 </li>
                 <li class="nav-item nav-item-newsize">
-                    <a class="nav-link btn btn-neutral btn-primary btn-simple btn-round bold" href="@Url.Action("Map","Visualisation")">
-                        <p>Spatio Temporal</p>
-                    </a>
-                </li>
-                <li class="nav-item nav-item-newsize">
-                    <a class="nav-link btn btn-neutral btn-primary btn-simple btn-round bold" href="@Url.Action("ScatterPlot","Visualisation")">
-                        <p>Scatter Plot</p>
-                    </a>
-                </li>
-                <li class="nav-item nav-item-newsize">
-                    <a class="nav-link btn btn-neutral btn-primary btn-simple btn-round bold" href="@Url.Action("Choropleth","Visualisation")">
-                        <p>Choropleth</p>
+                    <a class="nav-link btn btn-neutral btn-primary btn-simple btn-round bold" href="@Url.Action("Visualisations","Visualisation")">
+                        <p>Visualisations</p>
                     </a>
                 </li>
                 @if (User.IsInRole("Admin"))

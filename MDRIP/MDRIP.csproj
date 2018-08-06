@@ -464,10 +464,10 @@
     <Content Include="Views\MDRs\Details.cshtml" />
     <Content Include="Views\MDRs\Edit.cshtml" />
     <Content Include="Views\MDRs\Index.cshtml" />
-    <Content Include="Views\Visualisation\Map.cshtml" />
+    <Content Include="Views\Visualisation\unused\Map.cshtml" />
     <Content Include="Views\Admin\CreateAccount.cshtml" />
     <Content Include="Views\Admin\CreateRole.cshtml" />
-    <Content Include="Views\Visualisation\Choropleth.cshtml" />
+    <Content Include="Views\Visualisation\unused\Choropleth.cshtml" />
     <Content Include="Views\Visualisation\Index.cshtml" />
     <Content Include="Content\style\mycss.css" />
     <Content Include="Content\style\now-ui-kit.css" />
@@ -501,8 +501,8 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Navbar.cshtml" />
     <Content Include="Views\_Layout.cshtml" />
-    <Content Include="Views\Visualisation\ScatterPlot.cshtml" />
-    <Content Include="Views\Visualisation\ScatterPlot %28copy%29.cshtml" />
+    <Content Include="Views\Visualisation\Visualisations.cshtml" />
+    <Content Include="Views\Visualisation\unused\ScatterPlot %28copy%29.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

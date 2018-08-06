@@ -1,9 +1,37 @@
 .small-box {
-border-radius: 2px;
-position: relative;
-display: block;
-margin-bottom: 20px;
-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1)
+    border-radius: 2px;
+    position: relative;
+    display: block;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1)
+}
+
+.test-bg {
+    background-color:aliceblue;
+    color:aliceblue;
+}
+
+.btn-visnav {
+    border-radius:100px;
+    justify-content:center;
+}
+
+table {
+    width:100%;
+}
+tr td:hover {
+    width:100%;
+    background-color: #e5e5e5;
+}
+
+.input-sidebar {
+    height:30px;
+    max-height:40px;
+}
+
+.btn-sidebar {
+    border-radius:100px;
+    max-height:30px;
 }
 
 .test-border{
@@ -78,7 +106,11 @@ box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1)
 }
 
 .remainingheight{
-    height:calc(100vh - 200px)
+    height:calc(100vh - 150px);
+    padding-left:25px;
+    margin-top:-17px;
+    display:flex;
+    width:auto;
 }
 
 .fullscreen {

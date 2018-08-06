@@ -14,17 +14,7 @@ namespace MDRIP.Controllers
             return View ();
         }
 
-        public ActionResult Map()
-        {
-            return View();
-        }
-
-        public ActionResult Choropleth()
-        {
-            return View();
-        }
-
-        public ActionResult ScatterPlot(string id)
+        public ActionResult Visualisations(string id)
         {
             ViewBag.Id = id;
             return View();

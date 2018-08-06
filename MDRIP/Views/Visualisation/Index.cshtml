@@ -15,7 +15,7 @@
             <h6>Map
             </h6>
             <hr/>
-            <a href="@Url.Action("Map","Visualisation")">
+            <a href="@Url.Action("Visualisations","Visualisation")?id=geographicmap">
                 <div id="geographicmap" class="scatterplot viscomponent"></div>
             </a>
             @*<a href="#" class="small-box-footer bg-dark">More info <i class="fa fa-arrow-circle-right"></i></a>*@
@@ -25,7 +25,7 @@
         <div class="small-box bg-light">
             <h6>Choropleth Map</h6>
             <hr/>
-            <a href="@Url.Action("Choropleth","Visualisation")">
+            <a href="@Url.Action("Visualisations","Visualisation")?id=choroplethmap">
                 <div id="choroplethmap" class="scatterplot viscomponent"></div>
             </a>
         </div>
@@ -34,7 +34,7 @@
         <div class="small-box bg-light">
             <h6>Scatter Plot</h6>
             <hr/>
-            <a href="@Url.Action("ScatterPlot","Visualisation")?id=scatter">
+            <a href="@Url.Action("Visualisations","Visualisation")?id=scatter">
             <div id="scatterplot" class="scatterplot viscomponent"></div>
             </a>
         </div>
@@ -46,7 +46,7 @@
         <div class="small-box bg-light">
             <h6>Line Graph</h6>
             <hr/>
-            <a href="@Url.Action("ScatterPlot","Visualisation")?id=linegraph">
+            <a href="@Url.Action("Visualisations","Visualisation")?id=linegraph">
                 <div id="linegraph" class="viscomponent"></div>
             </a>
         </div>
@@ -55,7 +55,7 @@
         <div class="small-box bg-light">
             <h6>Bar Chart</h6>
             <hr/>
-            <a href="@Url.Action("ScatterPlot","Visualisation")?id=barchart">
+            <a href="@Url.Action("Visualisations","Visualisation")?id=barchart">
             <div id="bar" class="viscomponent"></div>
             </a>
         </div>
@@ -64,7 +64,7 @@
         <div class="small-box bg-light">
             <h6>Pie Chart</h6>
             <hr/>
-            <a href="@Url.Action("ScatterPlot","Visualisation")?id=piechart">
+            <a href="@Url.Action("Visualisations","Visualisation")?id=piechart">
                 <div id="donut" class="viscomponent"></div>
             </a>
         </div>

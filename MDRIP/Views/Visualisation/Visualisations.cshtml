@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Visualising";
+    ViewBag.Title = "Visualisations";
 }
 
 <div class="row alert alert-info" style="margin-top:65px;">
@@ -20,19 +20,20 @@
             <span class="badge badge-neutral selectedRegion">Region 5</span>
         </div>
     </div>
-    <div class="col-md-1" style="height:20px">
-        <ul class="nav nav-pills nav-pills-primary nav-pills-just-icons" role="tablist">
-            <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#link" role="tablist">
-                    <i class="fa fa-refresh"></i>
-                </a>
-            </li>
-        </ul>
+    <div class="col-md-1" style="display: flex;justify-content:flex-end;">
+        <span class="input-group-btn ">
+            <button class="btn btn-primary btn-icon btn-visnav btn-tooltip" data-toggle="tooltip" data-placement="bottom" data-container="body" data-animation="true"  data-original-title="Reset Visualisation" type="button"><i class="fa fa-undo"></i></button>
+        </span>
+        <span class="input-group-btn ">
+            <button class="btn btn-primary btn-icon btn-visnav btn-tooltip" data-toggle="tooltip" data-placement="bottom" data-container="body" data-animation="true" data-original-title="Refresh Visualisation" type="button"><i class="fa fa-refresh"></i></button>
+        </span>
     </div>
 </div>
 <div class="test-border sidenav">
-    <p>Filters</p>
-    <select class="form-control" id="chartSelection">
+    <div class="row alert">
+    </div>
+    <span class="progress-badge">Visualisation:</span>
+    <select class="form-control input-sidebar" id="chartSelection">
         <option>Select a Visualisation</option>
         <option>Bar Chart</option>
         <option>Choropleth Map</option>
@@ -41,16 +42,17 @@
         <option>Pie Chart</option>
         <option>Scatter Plot</option>
     </select>
+    <hr style="visibility:hidden"/>
     <div class="">
         <span class="progress-badge">Infection:</span>
-        <div class="input-group">
+        <div class="input-group input-sidebar">
             <input type="text" class="form-control" placeholder="Infection">
-            <span class="input-group-btn">
-                <button class="btn btn-primary btn-icon " type="button"><i class="fa fa-search"></i></button>
+            <span class="input-group-btn ">
+                <button class="btn btn-primary btn-icon btn-sidebar" type="button"><i class="fa fa-search"></i></button>
             </span>
-        </div><!-- /input-group -->
+        </div>
         <span class="progress-badge">Result:</span>
-        <div class="test-border" style="overflow-y: auto; overflow-x:none;height: 100px; width: 300px; background:grey">
+        <div style="overflow-y: auto;max-height: 100px; background:floralwhite">
             <table>
                 <tbody>
                     <tr><td class="infection_result_row" data-name="Infection 1">Infection 1</td></tr>
@@ -61,40 +63,37 @@
                 </tbody>
             </table>
         </div>
+        <hr style="visibility:hidden" />
         <span class="progress-badge">Country:</span>
-        <select class="form-control">
+        <select class="form-control input-sidebar" disabled>
             <option>Pakistan</option>
         </select>
 
         <span class="progress-badge">Regions:</span>
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Infection">
-            <span class="input-group-btn">
-                <button class="btn btn-primary btn-icon " type="button"><i class="fa fa-search"></i></button>
+        <div class="input-group input-sidebar">
+            <input type="text" class="form-control" placeholder="Region">
+            <span class="input-group-btn ">
+                <button class="btn btn-primary btn-icon btn-sidebar" type="button"><i class="fa fa-search"></i></button>
             </span>
-        </div><!-- /input-group -->
+        </div>
         <span class="progress-badge">Result:</span>
-        <div style="overflow: scroll; height: 100px; width: 300px">
+        <div style="overflow-y: auto;max-height: 100px; background:floralwhite">
             <table>
-                <thead>
-                    <tr>
-                        <th><div label="Column 1"></div></th>
-                        <th><div label="Column 1"></div></th>
-                    </tr>
-                </thead>
                 <tbody>
-                    <tr><td><input type="checkbox"></input></td><td class="region_result_row">Region 1</td></tr>
-                    <tr><td><input type="checkbox"></input></td><td class="region_result_row">Region 2</td></tr>
-                    <tr><td><input type="checkbox"></input></td><td class="region_result_row">Region 3</td></tr>
-                    <tr><td><input type="checkbox"></input></td><td class="region_result_row">Region 4</td></tr>
-                    <tr><td><input type="checkbox"></input></td><td class="region_result_row">Region 5</td></tr>
+                    <tr><td class="region_result_row">Region 1</td></tr>
+                    <tr><td class="region_result_row">Region 2</td></tr>
+                    <tr><td class="region_result_row">Region 3</td></tr>
+                    <tr><td class="region_result_row">Region 4</td></tr>
+                    <tr><td class="region_result_row">Region 5</td></tr>
                 </tbody>
             </table>
         </div>
 
+        <hr style="visibility:hidden" />
         <span class="progress-badge">From:</span>
         <input type="text" class="form-control date-picker" value="01/01/@DateTime.Now.Year" data-datepicker-color="primary">
 
+        <hr style="visibility:hidden" />
         <span class="progress-badge">To:</span>
         <input type="text" class="form-control date-picker" value="@DateTime.Now.Day/@DateTime.Now.Month/@DateTime.Now.Year" data-datepicker-color="primary">
 
@@ -386,10 +385,10 @@
         map.data.addListener('mouseover', function (event) {
             infowindow.setContent("<div style='width:150px; text-align: center;'>" + "Test" + "</div>");
 
-            var coordOne = event.feature.getGeometry().getAt(0).getAt(0).getAt(0);
-            var newLat = (coordOne.lat() + event.latLng.lat()) / 2;
-            var newLng = (coordOne.lng() + event.latLng.lng()) / 2;
-            var newCoord = new google.maps.LatLng(newLat, newLng);
+            //var coordOne = event.feature.getGeometry().getAt(0).getAt(0).getAt(0);
+            //var newLat = (coordOne.lat() + event.latLng.lat()) / 2;
+            //var newLng = (coordOne.lng() + event.latLng.lng()) / 2;
+            //var newCoord = new google.maps.LatLng(newLat, newLng);
 
             infowindow.setPosition(event.latLng);
             infowindow.setOptions({ pixelOffset: new google.maps.Size(0,0) });
