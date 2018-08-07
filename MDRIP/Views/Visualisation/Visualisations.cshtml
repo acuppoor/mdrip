@@ -4,34 +4,37 @@
 
 <div class="row alert alert-info" style="margin-top:65px;">
     <div class="col-md-11 bold">
+        <div id="prevalence_div" style="float:left">
+            <span class="badge badge-danger selectedstuff selectedInfection">Prevalence</span>
+            <span class="badge badge-danger selectedstuff selectedInfection">Death Rate</span>
+        </div>
+        <div style="float:left"><span class="">&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
         <div id="infections_div" style="float:left">
-            <span class="badge badge-danger selectedInfection">Infection 1</span>
-            <span class="badge badge-danger selectedInfection">Infection 2</span>
-            <span class="badge badge-neutral selectedInfection">Infection 3</span>
-            <span class="badge badge-danger selectedInfection">Infection 4</span>
-            <span class="badge badge-danger selectedInfection">Infection 5</span>
+            <span class="badge badge-danger selectedstuff selectedInfection">Infection 1</span>
+            <span class="badge badge-danger selectedstuff selectedInfection">Infection 2</span>
+            <span class="badge badge-neutral selectedstuff selectedInfection">Infection 3</span>
+            <span class="badge badge-danger selectedstuff selectedInfection">Infection 4</span>
+            <span class="badge badge-danger selectedstuff selectedInfection">Infection 5</span>
         </div>
         <div style="float:left"><span class="">&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
         <div id="regions_div" style="float:left">
-            <span class="badge badge-neutral selectedRegion">Region 1</span>
-            <span class="badge badge-neutral selectedRegion">Region 2</span>
-            <span class="badge badge-neutral selectedRegion">Region 3</span>
-            <span class="badge badge-neutral selectedRegion">Region 4</span>
-            <span class="badge badge-neutral selectedRegion">Region 5</span>
+            <span class="badge badge-neutral selectedstuff selectedRegion">Region 1</span>
+            <span class="badge badge-neutral selectedstuff selectedRegion">Region 2</span>
+            <span class="badge badge-neutral selectedstuff selectedRegion">Region 3</span>
+            <span class="badge badge-neutral selectedstuff selectedRegion">Region 4</span>
+            <span class="badge badge-neutral selectedstuff selectedRegion">Region 5</span>
         </div>
     </div>
     <div class="col-md-1" style="display: flex;justify-content:flex-end;">
         <span class="input-group-btn ">
-            <button class="btn btn-primary btn-icon btn-visnav btn-tooltip" data-toggle="tooltip" data-placement="bottom" data-container="body" data-animation="true"  data-original-title="Reset Visualisation" type="button"><i class="fa fa-undo"></i></button>
+            <button class="btn btn-primary btn-icon btn-visnav btn-tooltip" data-toggle="tooltip" data-placement="bottom" data-container="body" data-animation="true" data-original-title="Refresh Visualisation" type="button"><i class="fa fa-refresh"></i></button>
         </span>
         <span class="input-group-btn ">
-            <button class="btn btn-primary btn-icon btn-visnav btn-tooltip" data-toggle="tooltip" data-placement="bottom" data-container="body" data-animation="true" data-original-title="Refresh Visualisation" type="button"><i class="fa fa-refresh"></i></button>
+            <button class="btn btn-primary btn-icon btn-visnav btn-tooltip" data-toggle="tooltip" data-placement="bottom" data-container="body" data-animation="true" data-original-title="Reset Visualisation" type="button"><i class="fa fa-undo"></i></button>
         </span>
     </div>
 </div>
 <div class="test-border sidenav">
-    <div class="row alert">
-    </div>
     <span class="progress-badge">Visualisation:</span>
     <select class="form-control input-sidebar" id="chartSelection">
         <option>Select a Visualisation</option>
@@ -101,7 +104,7 @@
 </div>
 
 <div class="row remainingheight">
-    <div class="col-md-12" id="visualisation">
+    <div class="col-md-12" id="visualisation" style="border: 1px solid black">
     </div>
 </div>
 
@@ -470,8 +473,21 @@
     }
 
     function barchart() {
+
+        var visDiv = $('#visualisation');
+
+        var barchart = document.createElement('div');
+        barchart.id = 'barchart';
+        barchart.setAttribute("style", "width:50%; height;100%; vertical-align: middle; text-align: center; float:left");
+        visDiv[0].appendChild(barchart);
+
+        var piechart = document.createElement('div');
+        piechart.id = 'piechart';
+        piechart.setAttribute("style", "width:50%; height;100%; float:right;");
+        visDiv[0].appendChild(piechart);
+        
         Morris.Bar({
-            element: 'visualisation',
+            element: 'barchart',
             data: [
                 { y: 'Islamabad', a: 100},
                 { y: 'Region 2', a: 75},
@@ -485,6 +501,16 @@
             ykeys: ['a'],
             hideHover: 'auto',
             labels: ['Prevalence']
+        });
+
+        Morris.Donut({
+            element: 'piechart',
+            data: [
+                { label: "Infection 1", value: 12 },
+                { label: "Infection 2", value: 30 },
+                { label: "Infection 4", value: 20 },
+                { label: "Infection 5", value: 20 }
+            ]
         });
     }
 
