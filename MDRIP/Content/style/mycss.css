@@ -6,9 +6,21 @@
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1)
 }
 
+#barchart svg, #piechart svg{
+    width:100%;
+}
+
+.vis-nav{
+    background: #9aa3ab;    
+}
+
 .selectedstuff {
     text-transform:capitalize;
     font-size:12px;
+}
+
+.table-result-bg{
+    background: rgba(12, 84, 96, 0.46);
 }
 
 .calRemainingHeight {
@@ -29,13 +41,18 @@ table {
     width:100%;
 }
 tr td:hover {
-    width:100%;
-    background-color: #e5e5e5;
+    background-color: #5c5c5c;
 }
 
 .input-sidebar {
     height:30px;
     max-height:40px;
+    font-weight: bold;
+    border-radius: 100px;
+}
+.form-control{
+    background: white;
+    color: black;
 }
 
 .btn-sidebar {
@@ -53,7 +70,24 @@ tr td:hover {
 
 .sidenav {
     height: 100%; /* Full-height: remove this if you want "auto" height */
-    width: 180px; /* Set the width of the sidebar */
+    width: 300px; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    left: 0;
+    background-color: rgb(75, 75, 75); /* Black */
+    overflow-x: hidden; 
+}
+
+.visualisation-content {
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    /*left:300px;*/
+    /*width: calc(100% - 300px); */
+}
+.sidenav-ori{
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    width: 300px; /* Set the width of the sidebar */
     position: fixed; /* Fixed Sidebar (stay in place on scroll) */
     z-index: 1; /* Stay on top */
     top: 0; /* Stay at the top */
@@ -62,7 +96,6 @@ tr td:hover {
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 65px
 }
-
     /* The navigation menu links */
     .sidenav a {
         padding: 6px 8px 6px 16px;
@@ -208,21 +241,21 @@ z-index: 5
 }
 
 .small-box .icon {
--webkit-transition: all 0.3s linear;
--o-transition: all 0.3s linear;
-transition: all 0.3s linear;
-position: absolute;
-top: 25px;
-right: 10px;
-z-index: 0;
-font-size: 90px;
-color: rgba(0, 0, 0, 0.15)
+    -webkit-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+    position: absolute;
+    top: 25px;
+    right: 10px;
+    z-index: 0;
+    font-size: 90px;
+    color: rgba(0, 0, 0, 0.15)
 }
 
-    .small-box:hover {
-        text-decoration: none;
-        color: #000000
-    }
+.small-box:hover {
+    text-decoration: none;
+    color: #000000
+}
 
 .small-box:hover .icon {
     font-size: 95px
