@@ -474,14 +474,6 @@
     <Content Include="Content\style\now-ui-kit.css" />
     <Content Include="Content\style\bootstrap.min.css" />
     <Content Include="Content\style\demo.css" />
-    <Content Include="Scripts\script %28copy%29\bootstrap.min.js" />
-    <Content Include="Scripts\script %28copy%29\bootstrap-datepicker.js" />
-    <Content Include="Scripts\script %28copy%29\bootstrap-switch.js" />
-    <Content Include="Scripts\script %28copy%29\jquery.3.2.1.min.js" />
-    <Content Include="Scripts\script %28copy%29\jquery.sharrre.js" />
-    <Content Include="Scripts\script %28copy%29\nouislider.min.js" />
-    <Content Include="Scripts\script %28copy%29\now-ui-kit.js" />
-    <Content Include="Scripts\script %28copy%29\popper.min.js" />
     <Content Include="Scripts\script\bootstrap.min.js" />
     <Content Include="Scripts\script\bootstrap-datepicker.js" />
     <Content Include="Scripts\script\bootstrap-switch.js" />
@@ -502,8 +494,9 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Navbar.cshtml" />
     <Content Include="Views\_Layout.cshtml" />
-    <Content Include="Views\Visualisation\Visualisations.cshtml" />
+    <Content Include="Views\Visualisation\VisTests.cshtml" />
     <Content Include="Views\Visualisation\unused\ScatterPlot %28copy%29.cshtml" />
+    <Content Include="Views\Visualisation\Visualisations.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

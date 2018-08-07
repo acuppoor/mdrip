@@ -11,6 +11,10 @@
     font-size:12px;
 }
 
+.calRemainingHeight {
+    height: calc(100% - 65px);
+}
+
 .test-bg {
     background-color: aliceblue;
     color: aliceblue;
