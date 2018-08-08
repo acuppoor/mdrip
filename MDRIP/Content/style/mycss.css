@@ -112,19 +112,24 @@ color: rgba(0, 0, 0, 0.15)
 
 @media (max-width: 767px) {
     .small-box {
-        text-align: center
+        text-align: center;
     }
 
         .small-box .icon {
-            display: none
+            display: none;
         }
 
         .small-box p {
-            font-size: 12px
+            font-size: 12px;
         }
 
-
     .removecaps {
-        text-transform: none !important
+        text-transform: none !important;
+    }
+
+    .card {
+        margin: 0 auto; /* Added */
+        float: none; /* Added */
+        margin-bottom: 10px; /* Added */
     }
    
