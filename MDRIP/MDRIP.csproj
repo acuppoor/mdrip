@@ -498,6 +498,7 @@
     <Content Include="Views\Visualisation\Visualisations.cshtml" />
     <Content Include="Views\Visualisation\unused\ScatterPlot %28copy%29.cshtml" />
     <Content Include="Views\Visualisation\Visualisations_ugly.cshtml" />
+    <Content Include="Views\Account\LandingPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

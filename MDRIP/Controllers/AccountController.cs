@@ -495,7 +495,69 @@ namespace MDRIP.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        internal class ChallengeResult : HttpUnauthorizedResult
+		// GET: /Account/Landing page
+		[AllowAnonymous]
+		public ActionResult LandingPage(string returnUrl)
+		{
+			ViewBag.ReturnUrl = returnUrl;
+
+			return View("LandingPage");
+		}
+
+		[HttpPost]
+		[AllowAnonymous]
+		[ValidateAntiForgeryToken]
+		public async Task<ActionResult> LandingPage(LoginViewModel model, string returnUrl)
+		{
+			if (!ModelState.IsValid)
+			{
+				return View(model);
+			}
+
+			var user = UserManager.FindByEmail(model.Email);
+
+			if (user == null)
+			{
+				ModelState.AddModelError("", "No such account. Please Register.");
+				return View("LandingPage");
+			}
+
+			if (!UserManager.IsEmailConfirmed(user.Id))
+			{
+				ModelState.AddModelError("", "You need to confirm your email. An email with a confirmation link has been sent to your email address.");
+				string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+				var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+				await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>.<br/> Previous emails to confirm your account are no longer valid.");
+				return View("Login");
+			}
+
+			if (!user.Activated)
+			{
+				ModelState.AddModelError("", "Your account has not been activated yet. Please contact us if you think this is an error.");
+				return View("Login");
+			}
+
+			// This doesn't count login failures towards account lockout
+			// To enable password failures to trigger account lockout, change to shouldLockout: true
+			var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: true);
+			switch (result)
+			{
+				case SignInStatus.Success:
+					return RedirectToLocal(returnUrl);
+				case SignInStatus.LockedOut:
+					return View("Lockout");
+				case SignInStatus.RequiresVerification:
+					return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+				case SignInStatus.Failure:
+
+				default:
+					ModelState.AddModelError("", "Invalid login attempt.");
+					return View("LandingPage");
+			}
+		}
+
+
+		internal class ChallengeResult : HttpUnauthorizedResult
         {
             public ChallengeResult(string provider, string redirectUri)
                 : this(provider, redirectUri, null)
