@@ -140,7 +140,8 @@ tr td:hover {
 }
 
 .viscomponent{
-    height:300px;
+    min-height:300px;
+    height:auto;
 }
 
 .small-box{
