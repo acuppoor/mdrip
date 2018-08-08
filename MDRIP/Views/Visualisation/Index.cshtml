@@ -72,6 +72,13 @@
                 </div>
             </div>
     </div>
+
+        <div class="row">
+            <footer>
+                <hr />
+                <p>&copy; @DateTime.Now.Year - MDRIP</p>
+            </footer>
+        </div>
     </div>
 </div>
 
@@ -88,6 +95,14 @@
 
 
 <script>
+    $(document).ready(function () {
+        var footer = $('#footer');
+        if (footer === null) {
+            footer = document.getElementById('footer');
+        }
+        footer.style.visibility = "hidden";
+    });
+
     // Line Graph code
     Morris.Line({
         element: 'linegraph',
