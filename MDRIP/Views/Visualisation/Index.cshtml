@@ -2,79 +2,76 @@
     ViewBag.Title = "Dashboard";
 }
 
-<div class="row alert alert-danger" style="margin-top:65px;">
-    <div class="col-md-12 bold">
-        Placeholder for alerts
-    </div>
-</div>
-<hr />
-
-<div class="page-header clear-filter">
-    <div class="">
-        <div class="container-fluid">
-            <div class="row padding-left-right">
-                <div class="col-md-4">
-                    <div class="small-box bg-light">
-                        <h6>
-                            Map
-                        </h6>
-                        <hr />
-                        <a href="@Url.Action("Visualisations","Visualisation")?id=geographicmap">
-                            <div id="geographicmap" class="scatterplot viscomponent"></div>
-                        </a>
-                        @*<a href="#" class="small-box-footer bg-dark">More info <i class="fa fa-arrow-circle-right"></i></a>*@
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="small-box bg-light">
-                        <h6>Choropleth Map</h6>
-                        <hr />
-                        <a href="@Url.Action("Visualisations","Visualisation")?id=choroplethmap">
-                            <div id="choroplethmap" class="scatterplot viscomponent"></div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="small-box bg-light">
-                        <h6>Scatter Plot</h6>
-                        <hr />
-                        <a href="@Url.Action("Visualisations","Visualisation")?id=scatter">
-                            <div id="scatterplot" class="scatterplot viscomponent"></div>
-                        </a>
-                    </div>
+<div class="page-header clear-filter" style="">
+    <div class="container-fluid">
+        <div class="row alert alert-danger" style="margin-top:65px;">
+            <div class="col-md-12 bold">
+                Placeholder for alerts
+            </div>
+        </div>
+        <hr />
+        <div class="row padding-left-right">
+            <div class="col-md-4">
+                <div class="small-box bg-light">
+                    <h6>
+                        Map
+                    </h6>
+                    <hr />
+                    <a href="@Url.Action("Visualisations","Visualisation")?id=geographicmap">
+                        <div id="geographicmap" class="scatterplot viscomponent"></div>
+                    </a>
+                    @*<a href="#" class="small-box-footer bg-dark">More info <i class="fa fa-arrow-circle-right"></i></a>*@
                 </div>
             </div>
-
-            <div class="row padding-left-right">
-                <div class="col-md-4">
-                    <div class="small-box bg-light">
-                        <h6>Line Graph</h6>
-                        <hr />
-                        <a href="@Url.Action("Visualisations","Visualisation")?id=linegraph">
-                            <div id="linegraph" class="viscomponent"></div>
-                        </a>
-                    </div>
+            <div class="col-md-4">
+                <div class="small-box bg-light">
+                    <h6>Choropleth Map</h6>
+                    <hr />
+                    <a href="@Url.Action("Visualisations","Visualisation")?id=choroplethmap">
+                        <div id="choroplethmap" class="scatterplot viscomponent"></div>
+                    </a>
                 </div>
-                <div class="col-md-4">
-                    <div class="small-box bg-light">
-                        <h6>Bar Chart</h6>
-                        <hr />
-                        <a href="@Url.Action("Visualisations","Visualisation")?id=barchart">
-                            <div id="bar" class="viscomponent"></div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="small-box bg-light">
-                        <h6>Pie Chart</h6>
-                        <hr />
-                        <a href="@Url.Action("Visualisations","Visualisation")?id=piechart">
-                            <div id="donut" class="viscomponent"></div>
-                        </a>
-                    </div>
+            </div>
+            <div class="col-md-4">
+                <div class="small-box bg-light">
+                    <h6>Scatter Plot</h6>
+                    <hr />
+                    <a href="@Url.Action("Visualisations","Visualisation")?id=scatter">
+                        <div id="scatterplot" class="scatterplot viscomponent"></div>
+                    </a>
                 </div>
             </div>
         </div>
+
+        <div class="row padding-left-right">
+            <div class="col-md-4">
+                <div class="small-box bg-light">
+                    <h6>Line Graph</h6>
+                    <hr />
+                    <a href="@Url.Action("Visualisations","Visualisation")?id=linegraph">
+                        <div id="linegraph" class="viscomponent"></div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="small-box bg-light">
+                    <h6>Bar Chart</h6>
+                    <hr />
+                    <a href="@Url.Action("Visualisations","Visualisation")?id=barchart">
+                        <div id="bar" class="viscomponent"></div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="small-box bg-light">
+                    <h6>Pie Chart</h6>
+                    <hr />
+                    <a href="@Url.Action("Visualisations","Visualisation")?id=piechart">
+                        <div id="donut" class="viscomponent"></div>
+                    </a>
+                </div>
+            </div>
+    </div>
     </div>
 </div>
 
