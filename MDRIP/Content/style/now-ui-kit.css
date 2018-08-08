@@ -2978,8 +2978,11 @@ textarea.form-control:active {
 }
 
 .badge-danger {
-    border-color: #FF3636;
-    color: #FF3636;
+    /*border-color: #FF3636;
+        color: #FF3636;
+    */
+    border-color: #000;
+    color: #000;
 }
 
 .badge-neutral {

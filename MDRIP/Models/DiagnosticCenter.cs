@@ -18,7 +18,6 @@ namespace MDRIP.Models
         public String MDRPathogen { get; set; }
         public String PatientInfection { get; set; }
         public String AntibioticResistence { get; set; }
-
         public ICollection<Infections> Infections { get; set; }
         public ICollection<ClinicalInformation> ClinicalInformation { get; set; }
         public ICollection<Bacteria> Bacterias { get; set; }

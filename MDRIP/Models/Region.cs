@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MDRIP.Models
 {
-    public class RegionModel
+    public class Region
     {
         [Display(Name = "Country")]
         [Required]
@@ -14,5 +14,9 @@ namespace MDRIP.Models
         [Required]
         public virtual Country Country { get; set; }
 
+
+        [Display(Name = "Region")]
+        [Required]
+        public string Name { get; set; }
     }
 }

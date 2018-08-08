@@ -1,0 +1,272 @@
+﻿@{
+ViewBag.Title = "Visualisations";
+}
+<style>
+    .body {
+        overflow-y: hidden;
+    }
+</style>
+<div class="page-header clear-filter">
+
+<nav class="navbar navbar-expand-lg bg-dark fixed-top">
+    <div class="container">
+        <div class="navbar-translate">
+            <a class="navbar-brand bold nav-item-newsize" href="@Url.Action("Index","Home")" rel="tooltip" title="" data-placement="bottom">
+                MDRIP
+            </a>
+            <button class="navbar-toggler navbar-toggler toggled" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+            </button>
+
+        </div>
+        <div class="collapse navbar-collapse justify-content-center has-image" id="navigation" style="background: ~/Assets/img/blurred-image-1.jpg 0% 0% / cover;">
+            <ul class="navbar-nav">
+                <li class="nav-item nav-item-newsize">
+                    <a class="nav-link btn btn-neutral btn-primary btn-simple btn-round bold" href="@Url.Action("Index","Visualisation")">
+                        <i class="fa fa-fw fa-dashboard"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li class="nav-item nav-item-newsize">
+                    <a class="nav-link btn btn-neutral btn-primary btn-simple btn-round bold" href="@Url.Action("Visualisations","Visualisation")">
+                        <p>Visualisations</p>
+                    </a>
+                </li>
+                @if (User.IsInRole("Admin"))
+                {
+                    <li class="nav-item nav-item-newsize">
+                        <a class="nav-link bold" href="@Url.Action("Upload", "Utils")">
+                            <i class="fa fa-fw fa-dashboard"></i>
+                            <p>Upload</p>
+                        </a>
+                    </li>
+                    <li class="nav-item nav-item-newsize">
+                        <a class="nav-link bold" href="@Url.Action("Index", "Admin")">
+                            <i class="fa fa-fw fa-dashboard"></i>
+                            <p>Admin</p>
+                        </a>
+                    </li>
+                }
+
+
+                @Html.Partial("_LoginPartial")
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div style="margin-top:65px;" class="calRemainingHeight">
+    <div class="sidenav" style="width: 20%">
+        <div style="padding: 15px">
+            <div>
+                <div class="input-sidebar" style="float: left; width: 35%">Visualisation:</div>
+                <div style="float: left; width: 65%">
+                    <select class="form-control input-sidebar" id="chartSelection" style="border-radius: 100px">
+                        <option>Select a Visualisation</option>
+                        <option>Bar Chart</option>
+                        <option>Choropleth Map</option>
+                        <option>Geographic Map</option>
+                        <option>Line Graph</option>
+                        <option>Pie Chart</option>
+                        <option>Scatter Plot</option>
+                    </select>
+                </div>
+            </div>
+            <br/>
+            <hr style="visibility: hidden"/>
+            <div style="padding-top: 15px">
+                <div class="input-sidebar" style="float: left; width: 35%"><span class="progress-badge">Infection:</span></div>
+    
+                <div class="input-group input-sidebar" style="float: left; width: 65%">
+                    <input type="text" class="form-control" placeholder="Infection" value="Infection">
+                    <span class="input-group-btn ">
+                        <button class="btn btn-primary btn-icon btn-sidebar" type="button"><i class="fa fa-search"></i></button>
+                    </span>
+                </div>
+            </div>
+    
+            <div>
+                <div class="input-sidebar" style="float: left; width: 35%"><span class="progress-badge">Results:</span></div>
+    
+                <div class="input-group table-result-bg" style="max-height: 100px; float: left; width: 65%; overflow-y: auto;">
+                    <table>
+                        <tbody>
+                        <tr><td class="infection_result_row" data-name="Infection 1">Infection 1</td></tr>
+                        <tr><td class="infection_result_row" data-name="Infection 2">Infection 2</td></tr>
+                        <tr><td class="infection_result_row" data-name="Infection 4">Infection 4</td></tr>
+                        <tr><td class="infection_result_row" data-name="Infection 5">Infection 5</td></tr>
+                        <tr><td class="infection_result_row" data-name="Infection 7">Infection 7</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+    
+            <br/>
+            <hr style="visibility: hidden"/>
+    
+            <div style="padding-top: 15px">
+                <div class="input-sidebar" style="float: left; width: 35%">Country:</div>
+                <div style="float: left; width: 65%" class="input-group">
+                    <select class="form-control input-sidebar" disabled>
+                        <option>Pakistan</option>
+                    </select>
+                </div>
+            </div>
+    
+            <br/>
+            <hr style="visibility: hidden"/>
+    
+            <div >
+                <div class="input-sidebar" style="float: left; width: 35%">Region:</div>
+                <div style="float: left; width: 65%">
+                    <div class="input-group input-sidebar">
+                        <input type="text" class="form-control" placeholder="Region" value="Region">
+                        <span class="input-group-btn ">
+                            <button class="btn btn-primary btn-icon btn-sidebar" type="button"><i class="fa fa-search"></i></button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+    
+            <div>
+                <div class="input-sidebar" style="float: left; width: 35%"><span class="progress-badge">Results:</span></div>
+    
+                <div class="input-group table-result-bg" style="max-height: 100px; float: left; width: 65%; overflow-y: auto;">
+                    <table>
+                        <tbody>
+                        <tr><td class="region_result_row">Region 1</td></tr>
+                        <tr><td class="region_result_row">Region 2</td></tr>
+                        <tr><td class="region_result_row">Region 3</td></tr>
+                        <tr><td class="region_result_row">Region 4</td></tr>
+                        <tr><td class="region_result_row">Region 5</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+    
+            <br/>
+            <hr style="visibility: hidden"/>
+    
+            <div style="padding-top: 30px">
+                <div class="input-sidebar" style="float: left; width: 35%">From:</div>
+                <div style="float: left; width: 65%">
+                    <div class="input-group input-sidebar">
+                        <input type="text" class="form-control date-picker" value="01/01/@DateTime.Now.Year" data-datepicker-color="primary">
+                    </div>
+                </div>
+            </div>
+    
+            <br/>
+            <hr style="visibility: hidden"/>
+    
+            <div >
+                <div class="input-sidebar" style="float: left; width: 35%">To:</div>
+                <div style="float: left; width: 65%">
+                    <div class="input-group input-sidebar">
+                        <input type="text" class="form-control date-picker" value="@DateTime.Now.Day/@DateTime.Now.Month/@DateTime.Now.Year" data-datepicker-color="primary">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+    <div class="visualisation-content" style="width: 80%; left:20%">
+        <div class="container-fluid">
+            <div class="row alert vis-nav">
+                <div class="col-md-11 bold">
+                    <div id="prevalence_div" style="float: left">
+                        <span class="badge badge-danger selectedstuff selectedInfection">Prevalence</span>
+                        <span class="badge badge-danger selectedstuff selectedInfection">Death Rate</span>
+                    </div>
+                    <div style="float: left"><span class="">&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+                    <div id="infections_div" style="float: left">
+                        <span class="badge badge-danger selectedstuff selectedInfection">Infection 1</span>
+                        <span class="badge badge-danger selectedstuff selectedInfection">Infection 2</span>
+                        <span class="badge badge-neutral selectedstuff selectedInfection">Infection 3</span>
+                        <span class="badge badge-danger selectedstuff selectedInfection">Infection 4</span>
+                        <span class="badge badge-danger selectedstuff selectedInfection">Infection 5</span>
+                    </div>
+                    <div style="float: left"><span class="">&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+                    <div id="regions_div" style="float: left">
+                        <span class="badge badge-neutral selectedstuff selectedRegion">Region 1</span>
+                        <span class="badge badge-neutral selectedstuff selectedRegion">Region 2</span>
+                        <span class="badge badge-neutral selectedstuff selectedRegion">Region 3</span>
+                        <span class="badge badge-neutral selectedstuff selectedRegion">Region 4</span>
+                        <span class="badge badge-neutral selectedstuff selectedRegion">Region 5</span>
+                    </div>
+                </div>
+                <div class="col-md-1" style="display: flex; justify-content: flex-end;">
+                    <span class="input-group-btn ">
+                        <button class="btn btn-primary btn-icon btn-visnav btn-tooltip" data-toggle="tooltip" data-placement="bottom" data-container="body" data-animation="true" data-original-title="Refresh Visualisation" type="button"><i class="fa fa-refresh"></i></button>
+                    </span>
+                    <span class="input-group-btn ">
+                        <button class="btn btn-primary btn-icon btn-visnav btn-tooltip" data-toggle="tooltip" data-placement="bottom" data-container="body" data-animation="true" data-original-title="Reset Visualisation" type="button"><i class="fa fa-undo"></i></button>
+                    </span>
+                </div>
+            </div>
+            <div class="row remainingheight" style="padding: 0;">
+                <div class="col-md-12" id="visualisation" style="width: 100%; height: 100%;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="~/Scripts/script/morris.min.js"></script>
+<script src="~/Scripts/script/raphael.min.js"></script>
+<script src="~/Scripts/script/visualisation.js"></script>
+<script>
+    $(document).ready(function() {
+        var selectedItem = '@ViewBag.Id';
+        switch (selectedItem) {
+        case "piechart":
+            selectedItem = "Pie Chart";
+            donut();
+            break;
+        case "barchart":
+            selectedItem = "Bar Chart";
+            barchart();
+            break;
+        case "scatter":
+            selectedItem = "Scatter Plot";
+            scatter();
+            break;
+        case "linegraph":
+            selectedItem = "Line Graph";
+            lineGraph();
+            break;
+        case "choroplethmap":
+            selectedItem = "Choropleth Map";
+            choropleth();
+            break;
+        case "geographicmap":
+            selectedItem = "Geographic Map";
+            geographicmap();
+            break;
+        default:
+        }
+
+        var select = document.getElementById('chartSelection');
+
+        for (var i = 0; i < select.options.length; ++i) {
+            if (select.options[i].text === selectedItem)
+                select.options[i].selected = true;
+        }
+
+        toggleInfectionsAndRegions("selectedRegion");
+        toggleInfectionsAndRegions("selectedInfection");
+
+        addListenerToResults();
+
+    });
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDb6BqMVbPU5a6zxYg88S7AQcfoPbkhEaU"></script>

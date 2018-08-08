@@ -34,5 +34,9 @@ namespace MDRIP.Models
         public System.Data.Entity.DbSet<MDRIP.Models.ManagingInfections> ManagingInfections { get; set; }
 
         public System.Data.Entity.DbSet<MDRIP.Models.MDR> MDRs { get; set; }
+
+        public System.Data.Entity.DbSet<MDRIP.Models.Country> Countries { get; set; }
+
+        public System.Data.Entity.DbSet<MDRIP.Models.Region> Regions { get; set; }
     }
 }
