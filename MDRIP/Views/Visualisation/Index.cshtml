@@ -12,74 +12,80 @@
         <hr />
         <div class="row padding-left-right">
             <div class="col-md-4">
-                <div class="small-box bg-light">
-                    <h6>
-                        Map
-                    </h6>
-                    <hr />
-                    <a href="@Url.Action("Visualisations","Visualisation")?id=geographicmap">
-                        <div id="geographicmap" class="scatterplot viscomponent"></div>
-                    </a>
-                    @*<a href="#" class="small-box-footer bg-dark">More info <i class="fa fa-arrow-circle-right"></i></a>*@
-                </div>
+                <a href="@Url.Action("Visualisations","Visualisation")?id=geographicmap">
+                    <div class="card text-center vis-item">
+                        <div class="card-header">
+                            <ul class="nav nav-tabs nav-tabs-neutral justify-content-center" role="tablist" data-background-color="orange">
+                                <li class="nav-item">
+                                    <span class="nav-link" data-toggle="tab" href="#home1" role="tab">Map</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card-body">
+                            <div id="geographicmap" class="scatterplot viscomponent"></div>
+                        </div>
+                    </div>
+                </a>
+                @*<div class="small-box bg-light">
+            <h6>
+                Map
+            </h6>
+            <hr />
+            <a href="@Url.Action("Visualisations","Visualisation")?id=geographicmap">
+                <div id="geographicmap" class="scatterplot viscomponent"></div>
+            </a>
+        </div>*@
             </div>
-            <div class="col-md-4">
-                <div class="small-box bg-light">
-                    <h6>Choropleth Map</h6>
-                    <hr />
-                    <a href="@Url.Action("Visualisations","Visualisation")?id=choroplethmap">
-                        <div id="choroplethmap" class="scatterplot viscomponent"></div>
-                    </a>
+                    <div class="col-md-4">
+                        <div class="small-box bg-light">
+                            <h6>Choropleth Map</h6>
+                            <hr />
+                            <a href="@Url.Action("Visualisations","Visualisation")?id=choroplethmap">
+                                <div id="choroplethmap" class="scatterplot viscomponent"></div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="small-box bg-light">
+                            <h6>Scatter Plot</h6>
+                            <hr />
+                            <a href="@Url.Action("Visualisations","Visualisation")?id=scatter">
+                                <div id="scatterplot" class="scatterplot viscomponent"></div>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="small-box bg-light">
-                    <h6>Scatter Plot</h6>
-                    <hr />
-                    <a href="@Url.Action("Visualisations","Visualisation")?id=scatter">
-                        <div id="scatterplot" class="scatterplot viscomponent"></div>
-                    </a>
-                </div>
-            </div>
-        </div>
 
-        <div class="row padding-left-right">
-            <div class="col-md-4">
-                <div class="small-box bg-light">
-                    <h6>Line Graph</h6>
-                    <hr />
-                    <a href="@Url.Action("Visualisations","Visualisation")?id=linegraph">
-                        <div id="linegraph" class="viscomponent"></div>
-                    </a>
+                <div class="row padding-left-right">
+                    <div class="col-md-4">
+                        <div class="small-box bg-light">
+                            <h6>Line Graph</h6>
+                            <hr />
+                            <a href="@Url.Action("Visualisations","Visualisation")?id=linegraph">
+                                <div id="linegraph" class="viscomponent"></div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="small-box bg-light">
+                            <h6>Bar Chart</h6>
+                            <hr />
+                            <a href="@Url.Action("Visualisations","Visualisation")?id=barchart">
+                                <div id="bar" class="viscomponent"></div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="small-box bg-light">
+                            <h6>Pie Chart</h6>
+                            <hr />
+                            <a href="@Url.Action("Visualisations","Visualisation")?id=piechart">
+                                <div id="donut" class="viscomponent"></div>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="small-box bg-light">
-                    <h6>Bar Chart</h6>
-                    <hr />
-                    <a href="@Url.Action("Visualisations","Visualisation")?id=barchart">
-                        <div id="bar" class="viscomponent"></div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="small-box bg-light">
-                    <h6>Pie Chart</h6>
-                    <hr />
-                    <a href="@Url.Action("Visualisations","Visualisation")?id=piechart">
-                        <div id="donut" class="viscomponent"></div>
-                    </a>
-                </div>
-            </div>
-    </div>
-
-        <div class="row">
-            <footer>
-                <hr />
-                <p>&copy; @DateTime.Now.Year - MDRIP</p>
-            </footer>
-        </div>
-    </div>
 </div>
 
 
@@ -96,11 +102,15 @@
 
 <script>
     $(document).ready(function () {
-        var footer = $('#footer');
-        if (footer === null) {
-            footer = document.getElementById('footer');
+        var visItems = $('.vis-item');
+        if (visItems === null) {
+            visItems = document.getElementsByClassName('vis-item');
         }
-        footer.style.visibility = "hidden";
+
+        for (var i = 0; i < visItems.length; i++) {
+            var visItem = visItems[0];
+        }
+
     });
 
     // Line Graph code

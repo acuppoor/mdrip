@@ -10,6 +10,10 @@
     width:100%;
 }
 
+.vis-item:hover {
+    box-shadow: 20px 20px 20px 20px black;
+}
+
 .vis-nav{
     background: #9aa3ab;    
 }

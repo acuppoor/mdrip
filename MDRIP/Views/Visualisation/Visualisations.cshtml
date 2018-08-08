@@ -62,7 +62,7 @@ ViewBag.Title = "Visualisations";
     <div class="sidenav" style="width: 20%">
         <div style="padding: 15px">
             <div>
-                <div class="input-sidebar" style="float: left; width: 35%">Visualisation:</div>
+                <div class="input-sidebar" style="float: left; width: 35%"><li class="fa fa-bar-chart" aria-hidden="true"></li>@*Visualisation:*@</div>
                 <div style="float: left; width: 65%">
                     <select class="form-control input-sidebar" id="chartSelection" style="border-radius: 100px">
                         <option>Select a Visualisation</option>
@@ -78,7 +78,7 @@ ViewBag.Title = "Visualisations";
             <br/>
             <hr style="visibility: hidden"/>
             <div style="padding-top: 15px">
-                <div class="input-sidebar" style="float: left; width: 35%"><span class="progress-badge">Infection:</span></div>
+                <div class="input-sidebar" style="float: left; width: 35%"><span class="progress-badge"><i class="fa fa-stethoscope" aria-hidden="true"></i>@*Infection:*@</span></div>
     
                 <div class="input-group input-sidebar" style="float: left; width: 65%">
                     <input type="text" class="form-control" placeholder="Infection" value="Infection">
@@ -89,7 +89,7 @@ ViewBag.Title = "Visualisations";
             </div>
     
             <div>
-                <div class="input-sidebar" style="float: left; width: 35%"><span class="progress-badge">Results:</span></div>
+                <div class="input-sidebar" style="float: left; width: 35%"><span class="progress-badge"><i class="fa fa-list-ol" aria-hidden="true"></i>@*Results:*@</span></div>
     
                 <div class="input-group table-result-bg" style="max-height: 100px; float: left; width: 65%; overflow-y: auto;">
                     <table>
@@ -108,7 +108,7 @@ ViewBag.Title = "Visualisations";
             <hr style="visibility: hidden"/>
     
             <div style="padding-top: 15px">
-                <div class="input-sidebar" style="float: left; width: 35%">Country:</div>
+                <div class="input-sidebar" style="float: left; width: 35%"><i class="fa fa-globe" aria-hidden="true"></i>@*Country:*@</div>
                 <div style="float: left; width: 65%" class="input-group">
                     <select class="form-control input-sidebar" disabled>
                         <option>Pakistan</option>
@@ -120,7 +120,7 @@ ViewBag.Title = "Visualisations";
             <hr style="visibility: hidden"/>
     
             <div >
-                <div class="input-sidebar" style="float: left; width: 35%">Region:</div>
+                <div class="input-sidebar" style="height:100px; float: left; width: 35%"><i style="height:100px" class="fa fa-map-marker" aria-hidden="true"></i>@*Region:*@</div>
                 <div style="float: left; width: 65%">
                     <div class="input-group input-sidebar">
                         <input type="text" class="form-control" placeholder="Region" value="Region">
@@ -132,7 +132,7 @@ ViewBag.Title = "Visualisations";
             </div>
     
             <div>
-                <div class="input-sidebar" style="float: left; width: 35%"><span class="progress-badge">Results:</span></div>
+                <div class="input-sidebar" style="float: left; width: 35%"><span class="progress-badge">@*Results:*@</span></div>
     
                 <div class="input-group table-result-bg" style="max-height: 100px; float: left; width: 65%; overflow-y: auto;">
                     <table>

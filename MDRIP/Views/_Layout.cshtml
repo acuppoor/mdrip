@@ -6,14 +6,13 @@
     <title>@ViewBag.Title - MDRIP</title>
     @Styles.Render("~/Content/newcss")
     @Scripts.Render("~/bundles/modernizr")
-        @*<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">*@
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
 </head>
 <body class="body">
     @Html.Partial("_Navbar")
     <div class="wrapper">
         @RenderBody()
-        
         <footer id="footer">
             <p>&copy; @DateTime.Now.Year - MDRIP</p>
         </footer>
@@ -25,7 +24,7 @@
     <script type="text/javascript">
         $(document).ready(function() {
             // the body of this function is in assets/js/now-ui-kit.js
-            nowuiKit.initSliders();
+            //nowuiKit.initSliders();
         });
     </script>
 </body>
