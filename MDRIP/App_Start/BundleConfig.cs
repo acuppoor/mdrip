@@ -31,8 +31,7 @@ namespace MDRIP
                 "~/Scripts/script/bootstrap.min.js",
                 "~/Scripts/now-ui-kit.js",
                 "~/Scripts/script/bootstrap-switch.js",
-                "~/Scripts/script/bootstrap-datepicker.js",
-                "~/Scripts/script/nouislider.min.js"));
+                "~/Scripts/script/bootstrap-datepicker.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/visualisation_dashboard").Include(
                 "~/Scripts/script/raphael.min.js",
@@ -42,6 +41,7 @@ namespace MDRIP
             bundles.Add(new StyleBundle("~/Content/newcss").Include(
                       "~/Content/style/bootstrap.min.css",
                       "~/Content/style/now-ui-kit.css",
+                      //"~/Content/style/test-nowui.css",
                 "~/Content/style/font-awesome.min.css",
                 "~/Content/style/ionicons.min.css",
                 "~/Content/style/morris.css",

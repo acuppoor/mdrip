@@ -367,6 +367,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\style\test-nowui.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -474,7 +475,6 @@
     <Content Include="Content\style\mycss.css" />
     <Content Include="Content\style\now-ui-kit.css" />
     <Content Include="Content\style\bootstrap.min.css" />
-    <Content Include="Content\style\demo.css" />
     <Content Include="Scripts\script\bootstrap.min.js" />
     <Content Include="Scripts\script\bootstrap-datepicker.js" />
     <Content Include="Scripts\script\bootstrap-switch.js" />
@@ -497,7 +497,8 @@
     <Content Include="Views\_Layout.cshtml" />
     <Content Include="Views\Visualisation\Visualisations.cshtml" />
     <Content Include="Views\Visualisation\unused\ScatterPlot %28copy%29.cshtml" />
-    <Content Include="Views\Visualisation\Visualisations_ugly.cshtml" />
+    <Content Include="Views\Visualisation\unused\Visualisations_ugly.cshtml" />
+    <Content Include="Views\Visualisation\Index - Copy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
