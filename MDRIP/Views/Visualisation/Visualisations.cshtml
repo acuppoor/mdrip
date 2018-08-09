@@ -61,9 +61,9 @@ ViewBag.Title = "Visualisations";
 <div style="margin-top:65px;" class="calRemainingHeight">
     <div class="sidenav" style="width: 20%">
         <div style="padding: 15px">
-            <div>
-                <div class="input-sidebar" style="float: left; width: 35%"><li class="fa fa-bar-chart" aria-hidden="true"></li>@*Visualisation:*@</div>
-                <div style="float: left; width: 65%">
+            <div style="padding-bottom:30px">
+                <div class="vis-nav-icon"><li class="fa fa-bar-chart"></li>@*Visualisation:*@</div>
+                <div class="vis-nav-item">
                     <select class="form-control input-sidebar" id="chartSelection" style="border-radius: 100px">
                         <option>Select a Visualisation</option>
                         <option>Bar Chart</option>
@@ -75,12 +75,11 @@ ViewBag.Title = "Visualisations";
                     </select>
                 </div>
             </div>
-            <br/>
-            <hr style="visibility: hidden"/>
-            <div style="padding-top: 15px">
-                <div class="input-sidebar" style="float: left; width: 35%"><span class="progress-badge"><i class="fa fa-stethoscope" aria-hidden="true"></i>@*Infection:*@</span></div>
+            <hr style="clear: both"/>
+            <div>
+                <div class="vis-nav-icon"><span class="progress-badge"><i class="fa fa-stethoscope" aria-hidden="true"></i>@*Infection:*@</span></div>
     
-                <div class="input-group input-sidebar" style="float: left; width: 65%">
+                <div class="input-group input-sidebar vis-nav-item">
                     <input type="text" class="form-control" placeholder="Infection" value="Infection">
                     <span class="input-group-btn ">
                         <button class="btn btn-primary btn-icon btn-sidebar" type="button"><i class="fa fa-search"></i></button>
@@ -89,82 +88,73 @@ ViewBag.Title = "Visualisations";
             </div>
     
             <div>
-                <div class="input-sidebar" style="float: left; width: 35%"><span class="progress-badge"><i class="fa fa-list-ol" aria-hidden="true"></i>@*Results:*@</span></div>
+                <div class="vis-nav-icon"><span class="progress-badge"> &nbsp;@*<i class="fa fa-list-ol" aria-hidden="true"></i>*@@*Results:*@</span></div>
     
-                <div class="input-group table-result-bg" style="max-height: 100px; float: left; width: 65%; overflow-y: auto;">
+                <div class="input-group table-result-bg vis-nav-item" style="max-height: 100px; overflow-y: auto;">
                     <table>
                         <tbody>
                         <tr><td class="infection_result_row" data-name="Infection 1">Infection 1</td></tr>
                         <tr><td class="infection_result_row" data-name="Infection 2">Infection 2</td></tr>
-                        <tr><td class="infection_result_row" data-name="Infection 4">Infection 4</td></tr>
-                        <tr><td class="infection_result_row" data-name="Infection 5">Infection 5</td></tr>
-                        <tr><td class="infection_result_row" data-name="Infection 7">Infection 7</td></tr>
+                        <tr><td class="infection_result_row" data-name="Infection 3">Infection 3</td></tr>
+                        
                         </tbody>
                     </table>
                 </div>
             </div>
+            
+            @* <div style="clear: both"><hr/></div> *@
+            <hr style="clear: both"/>
     
-            <br/>
-            <hr style="visibility: hidden"/>
-    
-            <div style="padding-top: 15px">
-                <div class="input-sidebar" style="float: left; width: 35%"><i class="fa fa-globe" aria-hidden="true"></i>@*Country:*@</div>
-                <div style="float: left; width: 65%" class="input-group">
-                    <select class="form-control input-sidebar" disabled>
+            <div>
+                <div class="vis-nav-icon"><i class="fa fa-globe" aria-hidden="true"></i>@*Country:*@</div>
+                <div class="input-group vis-nav-item">
+                    <select class="form-control input-sidebar">
                         <option>Pakistan</option>
                     </select>
                 </div>
             </div>
+            
+            <div>
+                <div class="vis-nav-icon"><span class="progress-badge"><i class="fa fa-map-marker" aria-hidden="true"></i>@*Infection:*@</span></div>
     
-            <br/>
-            <hr style="visibility: hidden"/>
-    
-            <div >
-                <div class="input-sidebar" style="height:100px; float: left; width: 35%"><i style="height:100px" class="fa fa-map-marker" aria-hidden="true"></i>@*Region:*@</div>
-                <div style="float: left; width: 65%">
-                    <div class="input-group input-sidebar">
-                        <input type="text" class="form-control" placeholder="Region" value="Region">
-                        <span class="input-group-btn ">
-                            <button class="btn btn-primary btn-icon btn-sidebar" type="button"><i class="fa fa-search"></i></button>
-                        </span>
-                    </div>
+                <div class="input-group input-sidebar vis-nav-item">
+                    <input type="text" class="form-control" placeholder="Region" value="Region">
+                    <span class="input-group-btn ">
+                        <button class="btn btn-primary btn-icon btn-sidebar" type="button"><i class="fa fa-search"></i></button>
+                    </span>
                 </div>
             </div>
     
             <div>
-                <div class="input-sidebar" style="float: left; width: 35%"><span class="progress-badge">@*Results:*@</span></div>
+                <div class="vis-nav-icon"><span class="progress-badge"> &nbsp;@*Results:*@</span></div>
     
-                <div class="input-group table-result-bg" style="max-height: 100px; float: left; width: 65%; overflow-y: auto;">
+                <div class="input-group table-result-bg vis-nav-item" style="max-height: 100px; overflow-y: auto;">
                     <table>
                         <tbody>
-                        <tr><td class="region_result_row">Region 1</td></tr>
-                        <tr><td class="region_result_row">Region 2</td></tr>
-                        <tr><td class="region_result_row">Region 3</td></tr>
-                        <tr><td class="region_result_row">Region 4</td></tr>
-                        <tr><td class="region_result_row">Region 5</td></tr>
+                        <tr><td class="region_result_row" data-name="Region 1">Region 1</td></tr>
+                        <tr><td class="region_result_row" data-name="Region 2">Region 2</td></tr>
+                        <tr><td class="region_result_row" data-name="Region 3">Region 3</td></tr>
+                        <tr><td class="region_result_row" data-name="Region 4">Region 4</td></tr>
+                        <tr><td class="region_result_row" data-name="Region 5">Region 5</td></tr>
                         </tbody>
                     </table>
                 </div>
             </div>
+            
+            <hr style="clear: both"/>
     
-            <br/>
-            <hr style="visibility: hidden"/>
-    
-            <div style="padding-top: 30px">
-                <div class="input-sidebar" style="float: left; width: 35%">From:</div>
-                <div style="float: left; width: 65%">
+            <div style="padding-top: 0px">
+                <div class="input-sidebar" style="width: 30%; float: left"><li class="fa fa-calendar"></li> From:</div>
+                <div style="float: left; width:70%">
                     <div class="input-group input-sidebar">
                         <input type="text" class="form-control date-picker" value="01/01/@DateTime.Now.Year" data-datepicker-color="primary">
                     </div>
                 </div>
             </div>
     
-            <br/>
-            <hr style="visibility: hidden"/>
-    
             <div >
-                <div class="input-sidebar" style="float: left; width: 35%">To:</div>
-                <div style="float: left; width: 65%">
+                <div class="input-sidebar" style="float: left; width: 30%"><li class="fa fa-calendar"></li> To:</div>
+                <div style="float: left; width: 70%">
                     <div class="input-group input-sidebar">
                         <input type="text" class="form-control date-picker" value="@DateTime.Now.Day/@DateTime.Now.Month/@DateTime.Now.Year" data-datepicker-color="primary">
                     </div>
@@ -175,32 +165,69 @@ ViewBag.Title = "Visualisations";
         
     <div class="visualisation-content" style="width: 80%; left:20%">
         <div class="container-fluid">
-            <div class="row alert vis-nav">
+            <div class="row vis-nav">
                 <div class="col-md-11 bold">
-                    <div id="prevalence_div" style="float: left">
-                        <span class="badge badge-danger selectedstuff selectedInfection">Prevalence</span>
-                        <span class="badge badge-danger selectedstuff selectedInfection">Death Rate</span>
+
+                    <div id="prevalence_div">
+                        <Button class="vis-badge vis-badge-rate vis-badge-selected selectedRate">Prevalence</Button>
+                        <button class="vis-badge vis-badge-rate vis-badge-notselected selectedRate">Death Rate</button>
                     </div>
-                    <div style="float: left"><span class="">&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
-                    <div id="infections_div" style="float: left">
+
+                    <div id="infections_div">
+                        <button class="vis-badge vis-badge-infection vis-badge-selected selectedInfection">
+                            Infection  1
+                            <hr class="vis-vr">&nbsp;
+                            <a href="#" style="color:black;" class="fa fa-trash"></a>
+                        </button>
+                        <button class="vis-badge vis-badge-infection vis-badge-selected selectedInfection">
+                            Infection  2
+                            <hr class="vis-vr">&nbsp;
+                            <a href="#" style="color:black;" class="fa fa-trash"></a>
+                        </button>
+                        <button class="vis-badge vis-badge-infection vis-badge-selected selectedInfection">
+                            Infection  3
+                            <hr class="vis-vr">&nbsp;
+                            <a href="#" style="color:black;" class="fa fa-trash"></a>
+                        </button>
+                    </div>
+
+                    <div id="regions_div">
+                        <button class="vis-badge vis-badge-region vis-badge-selected selectedRegion">
+                            Region 1
+                            <hr class="vis-vr">&nbsp;
+                            <a href="#" style="color:black;" class="fa fa-trash"></a>
+                        </button>
+                        <button class="vis-badge vis-badge-region vis-badge-selected selectedRegion">
+                            Region 2
+                            <hr class="vis-vr">&nbsp;
+                            <a href="#" style="color:black;" class="fa fa-trash"></a>
+                        </button>
+                        <button class="vis-badge vis-badge-region vis-badge-selected selectedRegion">
+                            Region 3
+                            <hr class="vis-vr">&nbsp;
+                            <a href="" style="color:black;" class="fa fa-trash"></a>
+                        </button>
+                    </div>
+
+                    <!--<div id="infections_div" style="float: left">
                         <span class="badge badge-danger selectedstuff selectedInfection">Infection 1</span>
                         <span class="badge badge-danger selectedstuff selectedInfection">Infection 2</span>
                         <span class="badge badge-neutral selectedstuff selectedInfection">Infection 3</span>
                         <span class="badge badge-danger selectedstuff selectedInfection">Infection 4</span>
                         <span class="badge badge-danger selectedstuff selectedInfection">Infection 5</span>
-                    </div>
-                    <div style="float: left"><span class="">&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+                    </div>-->
+                   <!-- <div style="float: left"><span class="">&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
                     <div id="regions_div" style="float: left">
                         <span class="badge badge-neutral selectedstuff selectedRegion">Region 1</span>
                         <span class="badge badge-neutral selectedstuff selectedRegion">Region 2</span>
                         <span class="badge badge-neutral selectedstuff selectedRegion">Region 3</span>
                         <span class="badge badge-neutral selectedstuff selectedRegion">Region 4</span>
                         <span class="badge badge-neutral selectedstuff selectedRegion">Region 5</span>
-                    </div>
+                    </div>-->
                 </div>
                 <div class="col-md-1" style="display: flex; justify-content: flex-end;">
                     <span class="input-group-btn ">
-                        <button class="btn btn-primary btn-icon btn-visnav btn-tooltip" data-toggle="tooltip" data-placement="bottom" data-container="body" data-animation="true" data-original-title="Refresh Visualisation" type="button"><i class="fa fa-refresh"></i></button>
+                        <button class="btn btn-primary btn-icon btn-visnav btn-tooltip" id="refresh-vis-button" data-toggle="tooltip" data-placement="bottom" data-container="body" data-animation="true" data-original-title="Refresh Visualisation" type="button"><i class="fa fa-refresh"></i></button>
                     </span>
                     <span class="input-group-btn ">
                         <button class="btn btn-primary btn-icon btn-visnav btn-tooltip" data-toggle="tooltip" data-placement="bottom" data-container="body" data-animation="true" data-original-title="Reset Visualisation" type="button"><i class="fa fa-undo"></i></button>
@@ -228,8 +255,8 @@ ViewBag.Title = "Visualisations";
         var selectedItem = '@ViewBag.Id';
         switch (selectedItem) {
         case "piechart":
-            selectedItem = "Pie Chart";
-            donut();
+            selectedItem = "Bar Chart";
+            barchart();//donut();
             break;
         case "barchart":
             selectedItem = "Bar Chart";
@@ -263,10 +290,15 @@ ViewBag.Title = "Visualisations";
 
         toggleInfectionsAndRegions("selectedRegion");
         toggleInfectionsAndRegions("selectedInfection");
+        toggleInfectionsAndRegions("selectedRate");
 
         addListenerToResults();
+
+        document.getElementById('refresh-vis-button').addEventListener('click', function() {
+            refreshVis();
+        });
 
     });
 
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDb6BqMVbPU5a6zxYg88S7AQcfoPbkhEaU"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDb6BqMVbPU5a6zxYg88S7AQcfoPbkhEaU&libraries=visualization"></script>

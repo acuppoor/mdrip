@@ -3,7 +3,7 @@ function addListenerToResults() {
     for (var i = 0; i < infectionResults.length; i++) {
         var item = infectionResults[i];
         item.addEventListener('click', function () {
-            document.getElementById('infections_div').innerHTML += " <span class='badge badge-danger selectedInfection'>" + $(this).attr('data-name') + "</span> ";
+            document.getElementById('infections_div').innerHTML += '<button class="vis-badge vis-badge-infection vis-badge-selected selectedInfection">' + $(this).attr('data-name') + ' <hr class="vis-vr">&nbsp;<a href="#" style="color:black;" class="fa fa-trash"></a></button>';
             toggleInfectionsAndRegions("selectedInfection");
         });
     }
@@ -12,12 +12,144 @@ function addListenerToResults() {
     for (var i = 0; i < regionResults.length; i++) {
         var item = regionResults[i];
         item.addEventListener('click', function () {
-            document.getElementById('regions_div').innerHTML += " <span class='badge badge-danger selectedRegion'>" + $(this).attr('data-name') + "</span> ";
+            document.getElementById('regions_div').innerHTML += '<button class="vis-badge vis-badge-region vis-badge-selected selectedRegion">' +$(this).attr('data-name')+' <hr class="vis-vr">&nbsp;<a href="#" style="color:black;" class="fa fa-trash"></a></button>';
             toggleInfectionsAndRegions("selectedRegion");
         });
     }
 
 }
+
+function refreshVis() {
+    // the key is the region id as in the pakistan.json file
+    // lat, lng for each bacteria and any other details that will be asked by the client
+    // needs prevalence, death, color hex code for each region
+    // sum of prevalence and death is optional since can be done in front end
+    // below is an example of the json the api/controller must respond with
+    
+    var result = {
+            1: {
+                name:'Region One',
+                results:{
+                    'infectionOne': {
+                        prevalence: {
+                            '2018-01-01': 10,
+                            '2018-02-01': 23,
+                            '2018-03-01': 45
+                        },
+                        deathrate: {
+                            '2018-01-01': 4,
+                            '2018-02-01': 8,
+                            '2018-03-01': 20
+                        },
+                        prevalencecolor: '#868686',
+                        deathratecolor: '#868686',
+                        lat: 30,
+                        lng: 69.3 // other details for the visualisation goes below this line
+                    }
+                }
+            }
+    };
+
+    var element = $('#chartSelection');
+    var selected = element.val();
+    switch (selected) {
+        case "Pie Chart":
+        case "Bar Chart":
+            testbarchart(result);//donut();
+            break;
+        case "Scatter Plot":
+            scatter();
+            break;
+        case "Line Graph":
+            lineGraph();
+            break;
+        case "Choropleth Map":
+            choropleth();
+            break;
+        case "Geographic Map":
+            geographicmap();
+            break;
+        default:
+    }
+}
+
+
+function testbarchart(result) {
+
+    resetVisualisation();
+    var visDiv = $('#visualisation');
+
+    var barchart = document.createElement('div');
+    barchart.id = 'barchart';
+    barchart.setAttribute("style", "width:50%; height;100%; vertical-align: middle; text-align: center; float:left");
+    visDiv[0].appendChild(barchart);
+
+    var piechart = document.createElement('div');
+    piechart.id = 'piechart';
+    piechart.setAttribute("style", "width:50%; height;100%; float:right;");
+    visDiv[0].appendChild(piechart);
+    
+    // need to check if both prevalence and deathrate is selected. assuming yes here;
+    deathRate = true; prevalence = true;
+    var forBarchart = [];
+    var forPiechart = [];
+    for (var item in result){
+        var value = result[item];
+        var pushOne = {};
+        pushOne.y = value['name'];
+        if (prevalence) {
+            var totalprevalences = 0;
+            for (var subitem in value['results']){
+                prevalences = value['results'][subitem]['prevalence'];
+                for (var subsubitem in prevalences){
+                    totalprevalences += prevalences[subsubitem];
+                }
+            }
+            pushOne.a = totalprevalences;
+        }
+        if (deathRate){
+            var totaldeaths = 0;
+            for (var subitem in value['results']){
+                deathRates = value['results'][subitem]['deathrate'];
+                for (var subsubitem in deathRates){
+                    totaldeaths += deathRates[subsubitem];
+                }
+            }
+            pushOne.b = totaldeaths;
+        }
+        forBarchart.push(pushOne);
+        
+    }
+    ykeys = []; labels = [];
+    if (prevalence && deathRate){
+        ykeys=['a', 'b']; labels['Prevalence', 'Death Rate'];
+    } else {
+        if (prevalence){
+            xkeys=['a']; labels['Prevalence'];
+        } else {
+            xkeys=['b']; labels['Death Rate'];
+        }
+    }
+
+    Morris.Bar({
+        element: 'barchart',
+        data: forBarchart,
+        xkey: 'y',
+        ykeys: ykeys,
+        hideHover: 'auto',
+        labels: labels
+    });
+
+    Morris.Donut({
+        element: 'piechart',
+        data: [
+            { label: "Infection 1", value: 12 },
+            { label: "Infection 2", value: 30 },
+            { label: "Infection 3", value: 20 }
+        ]
+    });
+}
+
 
 function toggleInfectionsAndRegions(className) {
     var items = document.getElementsByClassName(className);
@@ -27,8 +159,8 @@ function toggleInfectionsAndRegions(className) {
     }
     for (var i = 0; i < items.length; i++) {
         items[i].addEventListener('click', function(event) {
-            $(this).toggleClass("badge-danger");
-            $(this).toggleClass("badge-neutral");
+            $(this).toggleClass("vis-badge-selected");
+            $(this).toggleClass("vis-badge-notselected");
         });
     }
 }
@@ -40,7 +172,7 @@ $('#chartSelection').change(function() {
     resetVisualisation();
     switch (selected) {
         case "Pie Chart":
-            donut();
+            barchart();//donut();
             break;
         case "Bar Chart":
             barchart();
@@ -60,6 +192,7 @@ $('#chartSelection').change(function() {
         default:
     }
 });
+
 
 function resetVisualisation() {
     $('#visualisation').innerHTML = "";
@@ -217,18 +350,36 @@ function choropleth() {
     var map = new google.maps.Map(document.getElementById("visualisation"), mapProp);
     var infowindow = new google.maps.InfoWindow();
     map.data.addListener('mouseover', function (event) {
-        infowindow.setContent("<div style='width:150px; text-align: center;'>" + "Test" + "</div>");
+        infowindow.setContent("<div style='width:auto; color: #0f0f0f'>" + 
+            "<table>"+
+                "<tr> <td>Location: </td><td>"+event.feature.getProperty('districts') + ", " + event.feature.getProperty('province_territory') +"</td>"+ 
+                "<tr><td>Prevalence: </td><td>12</td></tr>"+
+                "<tr><td>Death Rate: </td><td>13</td></tr>"+
+            "</table></div>");
 
         //var coordOne = event.feature.getGeometry().getAt(0).getAt(0).getAt(0);
         //var newLat = (coordOne.lat() + event.latLng.lat()) / 2;
         //var newLng = (coordOne.lng() + event.latLng.lng()) / 2;
         //var newCoord = new google.maps.LatLng(newLat, newLng);
 
+        // var heatmapData = [event.feature.getGeometry().getAt(0).getAt(0).getAt(0)];
+        // var heatmap = new google.maps.visualization.HeatmapLayer({
+        //     data: heatmapData
+        // });
+        // heatmap.setMap(map);
+
         infowindow.setPosition(event.latLng);
         infowindow.setOptions({ pixelOffset: new google.maps.Size(0,0) });
         infowindow.open(map);
     });
     map.data.loadGeoJson('/Assets/map/pakistan.json');//'@Url.Content("~/Assets/map/pakistan.json")');
+    map.data.setStyle({
+        fillColor: 'green',
+        strokeWeight: 0.5
+    });
+
+    
+
 }
 
 function lineGraph() {
@@ -260,42 +411,49 @@ function donut() {
         data: [
             { label: "Infection 1", value: 12 },
             { label: "Infection 2", value: 30 },
-            { label: "Infection 4", value: 20 },
-            { label: "Infection 5", value: 20 }
+            { label: "Infection 3", value: 20 }
         ]
     });
 }
 
 function scatter() {
-    var regions = ['Region1', 'Region2', 'Region3', 'Region4', 'Region5', 'Region6'];
+    var regions = ['Region 1', 'Region 2', 'Region 3'];
     var trace1 = {
         x: regions,
-        y: [1, 2, 3, 4, 5],
+        y: [1, 2, 3],
         mode: 'markers',
         type: 'scatter',
-        name: 'Infection A',
-        text: ['A-1', 'A-2', 'A-3', 'A-4', 'A-5'],
+        name: 'Infection 1',
+        // text: ['1', '2', '3'],
         marker: { size: 12 }
     };
 
     var trace2 = {
         x: regions,
-        y: [1, 3, 4, 5, 6],
+        y: [2, 4, 6],
         mode: 'markers',
         type: 'scatter',
-        name: 'Infection B',
-        text: ['B-a', 'B-b', 'B-c', 'B-d', 'B-e'],
+        name: 'Infection 2',
         marker: { size: 12 }
     };
 
-    var data = [trace1, trace2];
+    var trace3 = {
+        x: regions,
+        y: [3, 6, 9],
+        mode: 'markers',
+        type: 'scatter',
+        name: 'Infection 3',
+        marker: { size: 12 }
+    };
+
+    var data = [trace1, trace2, trace3];
 
     var layout = {
         xaxis: {
-            range: [-1, 6]
+            range: [-1, 4]
         },
         yaxis: {
-            range: [0, 8]
+            range: [0, 10]
         },
         title: 'Prevalence at Different Regions'
     };
@@ -320,18 +478,14 @@ function barchart() {
     Morris.Bar({
         element: 'barchart',
         data: [
-            { y: 'Islamabad', a: 100},
-            { y: 'Region 2', a: 75},
-            { y: 'Region 3', a: 50},
-            { y: 'Region 4', a: 75},
-            { y: 'Region 5', a: 50},
-            { y: 'Region 6', a: 75},
-            { y: 'Region 7', a: 100 }
+            { y: 'Region 1', a: 100, b:10},
+            { y: 'Region 2', a: 75, b:15},
+            { y: 'Region 3', a: 50, b:30}
         ],
         xkey: 'y',
-        ykeys: ['a'],
+        ykeys: ['a', 'b'],
         hideHover: 'auto',
-        labels: ['Prevalence']
+        labels: ['Prevalence', 'Death Rate']
     });
 
     Morris.Donut({
@@ -339,8 +493,7 @@ function barchart() {
         data: [
             { label: "Infection 1", value: 12 },
             { label: "Infection 2", value: 30 },
-            { label: "Infection 4", value: 20 },
-            { label: "Infection 5", value: 20 }
+            { label: "Infection 3", value: 20 }
         ]
     });
 }
