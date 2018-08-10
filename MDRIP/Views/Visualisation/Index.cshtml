@@ -14,78 +14,108 @@
             <div class="col-md-4">
                 <a href="@Url.Action("Visualisations","Visualisation")?id=geographicmap">
                     <div class="card text-center vis-item">
-                        <div class="card-header">
-                            <ul class="nav nav-tabs nav-tabs-neutral justify-content-center" role="tablist" data-background-color="orange">
-                                <li class="nav-item">
-                                    <span class="nav-link" data-toggle="tab" href="#home1" role="tab">Map</span>
+                        <div class="card-header vis-card-header">
+                            <div class="nav" style="height:100%;">
+                                <li class="nav-item fullhw">
+                                    <span class="nav-link vis-overview-text">Map</span>
                                 </li>
-                            </ul>
+                            </div>
                         </div>
                         <div class="card-body">
-                            <div id="geographicmap" class="scatterplot viscomponent"></div>
+                            <div id="geographicmap" class="viscomponent"></div>
                         </div>
                     </div>
                 </a>
-                @*<div class="small-box bg-light">
-            <h6>
-                Map
-            </h6>
-            <hr />
-            <a href="@Url.Action("Visualisations","Visualisation")?id=geographicmap">
-                <div id="geographicmap" class="scatterplot viscomponent"></div>
-            </a>
-        </div>*@
             </div>
-                    <div class="col-md-4">
-                        <div class="small-box bg-light">
-                            <h6>Choropleth Map</h6>
-                            <hr />
-                            <a href="@Url.Action("Visualisations","Visualisation")?id=choroplethmap">
-                                <div id="choroplethmap" class="scatterplot viscomponent"></div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="small-box bg-light">
-                            <h6>Scatter Plot</h6>
-                            <hr />
-                            <a href="@Url.Action("Visualisations","Visualisation")?id=scatter">
-                                <div id="scatterplot" class="scatterplot viscomponent"></div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="row padding-left-right">
-                    <div class="col-md-4">
-                        <div class="small-box bg-light">
-                            <h6>Line Graph</h6>
-                            <hr />
-                            <a href="@Url.Action("Visualisations","Visualisation")?id=linegraph">
-                                <div id="linegraph" class="viscomponent"></div>
-                            </a>
+            <div class="col-md-4">
+                <a href="@Url.Action("Visualisations","Visualisation")?id=choroplethmap">
+                    <div class="card text-center vis-item">
+                        <div class="card-header vis-card-header">
+                            <div class="nav" style="height:100%;">
+                                <li class="nav-item fullhw">
+                                    <span class="nav-link vis-overview-text">Choropleth Map</span>
+                                </li>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                             <div id="choroplethmap" class="viscomponent"></div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="small-box bg-light">
-                            <h6>Bar Chart</h6>
-                            <hr />
-                            <a href="@Url.Action("Visualisations","Visualisation")?id=barchart">
-                                <div id="bar" class="viscomponent"></div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="small-box bg-light">
-                            <h6>Pie Chart</h6>
-                            <hr />
-                            <a href="@Url.Action("Visualisations","Visualisation")?id=piechart">
-                                <div id="donut" class="viscomponent"></div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                </a>
             </div>
+
+            <div class="col-md-4">
+                <a href="@Url.Action("Visualisations","Visualisation")?id=scatter">
+                    <div class="card text-center vis-item">
+                        <div class="card-header vis-card-header">
+                            <div class="nav fullh">
+                                <li class="nav-item fullhw">
+                                    <span class="nav-link vis-overview-text">Scatter Plot</span>
+                                </li>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                             <div id="scatterplot" class="viscomponent"></div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+
+        <div class="row padding-left-right">
+            <div class="col-md-4">
+                <a href="@Url.Action("Visualisations","Visualisation")?id=linegraph">
+                    <div class="card text-center vis-item">
+                        <div class="card-header vis-card-header">
+                            <div class="nav fullh">
+                                <li class="nav-item fullhw">
+                                    <span class="nav-link vis-overview-text">Line Graph</span>
+                                </li>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                             <div id="linegraph" class="viscomponent"></div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-4">
+                <a href="@Url.Action("Visualisations","Visualisation")?id=barchart">
+                    <div class="card text-center vis-item">
+                        <div class="card-header vis-card-header">
+                            <div class="nav fullh">
+                                <li class="nav-item fullhw">
+                                    <span class="nav-link vis-overview-text">Bar Chart</span>
+                                </li>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                             <div id="bar" class="viscomponent"></div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-4">
+                <a href="@Url.Action("Visualisations","Visualisation")?id=piechart">
+                    <div class="card text-center vis-item">
+                        <div class="card-header vis-card-header">
+                            <div class="nav fullh">
+                                <li class="nav-item fullhw">
+                                    <span class="nav-link vis-overview-text">Pie Chart</span>
+                                </li>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                             <div id="donut" class="viscomponent"></div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
 </div>
 
 
