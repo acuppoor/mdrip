@@ -275,18 +275,33 @@
         var mapOne = new google.maps.Map(document.getElementById("choroplethmap"), mapProp);
         var infowindow = new google.maps.InfoWindow();
         mapOne.data.addListener('mouseover', function (event) {
-            infowindow.setContent("<div style='width:150px; text-align: center;'>" + "Test" + "</div>");
+            infowindow.setContent("<div style='width:auto; color: #0f0f0f'>" +
+                "<table>" +
+                "<tr> <td>Location: </td><td>" + event.feature.getProperty('districts') + ", " + event.feature.getProperty('province_territory') + "</td>" +
+                "<tr><td>Prevalence: </td><td>12</td></tr>" +
+                "<tr><td>Death Rate: </td><td>13</td></tr>" +
+                "</table></div>");
 
-            @*var coordOne = event.feature.getGeometry().getAt(0).getAt(0).getAt(0);
-            var newLat = (coordOne.lat() + event.latLng.lat()) / 2;
-            var newLng = (coordOne.lng() + event.latLng.lng()) / 2;
-            var newCoord = new google.maps.LatLng(newLat, newLng);*@
+            //var coordOne = event.feature.getGeometry().getAt(0).getAt(0).getAt(0);
+            //var newLat = (coordOne.lat() + event.latLng.lat()) / 2;
+            //var newLng = (coordOne.lng() + event.latLng.lng()) / 2;
+            //var newCoord = new google.maps.LatLng(newLat, newLng);
+
+            // var heatmapData = [event.feature.getGeometry().getAt(0).getAt(0).getAt(0)];
+            // var heatmap = new google.maps.visualization.HeatmapLayer({
+            //     data: heatmapData
+            // });
+            // heatmap.setMap(map);
 
             infowindow.setPosition(event.latLng);
-            infowindow.setOptions({ pixelOffset: new google.maps.Size(0,0) });
+            infowindow.setOptions({ pixelOffset: new google.maps.Size(0, 0) });
             infowindow.open(mapOne);
         });
         mapOne.data.loadGeoJson('@Url.Content("~/Assets/map/pakistan.json")');
+        mapOne.data.setStyle({
+            fillColor: 'green',
+            strokeWeight: 0.5
+        });
 
     /////////////////
 
