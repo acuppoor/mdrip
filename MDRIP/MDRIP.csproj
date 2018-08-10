@@ -318,6 +318,7 @@
     <Compile Include="Controllers\BacteriaController.cs" />
     <Compile Include="Controllers\BacterialEcologiesController.cs" />
     <Compile Include="Controllers\ClinicalInformationsController.cs" />
+    <Compile Include="Controllers\CountriesController.cs" />
     <Compile Include="Controllers\DiagnosticCentersController.cs" />
     <Compile Include="Controllers\EmergencyPreparationsController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
@@ -326,6 +327,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ManagingInfectionsController.cs" />
     <Compile Include="Controllers\MDRsController.cs" />
+    <Compile Include="Controllers\RegionsController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -339,7 +341,17 @@
     <Compile Include="Migrations\201808021029018_Strain.Designer.cs">
       <DependentUpon>201808021029018_Strain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808091820420_CountryAndRegions.cs" />
+    <Compile Include="Migrations\201808091820420_CountryAndRegions.Designer.cs">
+      <DependentUpon>201808091820420_CountryAndRegions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808091824141_CountryAndRegions1.cs" />
+    <Compile Include="Migrations\201808091824141_CountryAndRegions1.Designer.cs">
+      <DependentUpon>201808091824141_CountryAndRegions1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Country.cs" />
+    <Compile Include="Models\Region.cs" />
     <Compile Include="Models\ViewModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Bacteria.cs" />
@@ -499,6 +511,16 @@
     <Content Include="Views\Visualisation\Visualisations_ugly.cshtml" />
     <Content Include="Views\Account\LandingPage.cshtml" />
     <Content Include="Views\Visualisation\unused\Index - Copy.cshtml" />
+    <Content Include="Views\Countries\Create.cshtml" />
+    <Content Include="Views\Countries\Delete.cshtml" />
+    <Content Include="Views\Countries\Details.cshtml" />
+    <Content Include="Views\Countries\Edit.cshtml" />
+    <Content Include="Views\Countries\Index.cshtml" />
+    <Content Include="Views\Regions\Create.cshtml" />
+    <Content Include="Views\Regions\Delete.cshtml" />
+    <Content Include="Views\Regions\Details.cshtml" />
+    <Content Include="Views\Regions\Edit.cshtml" />
+    <Content Include="Views\Regions\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -523,6 +545,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808021029018_Strain.resx">
       <DependentUpon>201808021029018_Strain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808091820420_CountryAndRegions.resx">
+      <DependentUpon>201808091820420_CountryAndRegions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808091824141_CountryAndRegions1.resx">
+      <DependentUpon>201808091824141_CountryAndRegions1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

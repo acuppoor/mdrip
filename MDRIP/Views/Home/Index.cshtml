@@ -226,22 +226,15 @@
 
 	$("#test").click(function () {
 		$.ajax({
-			url: /TestController/GetAllInfections,
+            url: 'http://localhost:50227/api/test',
 			dataType: "json",
 			type: "GET",
 			contentType: 'application/json; charset=utf-8', //define a contentType of your request
-			cache: false,
-			data: { test: comments },
-			success: function (data) {
-				// data is your result from controller
-				if (data.success) {
-					alert(data.message);
-				}
-			},
-			error: function (xhr) {
-				alert('error');
-			}
-		});
+            type: 'GET',
+            success: function (res) {
+                console.log(res);
+            }
+        });
 	});
 
 	Morris.Line({
