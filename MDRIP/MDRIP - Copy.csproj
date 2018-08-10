@@ -374,135 +374,6 @@
     <Compile Include="Controllers\UtilsController.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\img\apple-icon.png" />
-    <Content Include="Assets\img\avatar.jpg" />
-    <Content Include="Assets\img\bg1.jpg" />
-    <Content Include="Assets\img\bg11.jpg" />
-    <Content Include="Assets\img\bg3.jpg" />
-    <Content Include="Assets\img\bg4.jpg" />
-    <Content Include="Assets\img\bg5.jpg" />
-    <Content Include="Assets\img\bg6.jpg" />
-    <Content Include="Assets\img\bg7.jpg" />
-    <Content Include="Assets\img\bg8.jpg" />
-    <Content Include="Assets\img\blurred-image-1.jpg" />
-    <Content Include="Assets\img\creative-tim-white-slim2.png" />
-    <Content Include="Assets\img\default-avatar.png" />
-    <Content Include="Assets\img\eva.jpg" />
-    <Content Include="Assets\img\favicon.png" />
-    <Content Include="Assets\img\flags\AD.png" />
-    <Content Include="Assets\img\flags\AE.png" />
-    <Content Include="Assets\img\flags\AG.png" />
-    <Content Include="Assets\img\flags\AM.png" />
-    <Content Include="Assets\img\flags\AR.png" />
-    <Content Include="Assets\img\flags\AT.png" />
-    <Content Include="Assets\img\flags\AU.png" />
-    <Content Include="Assets\img\flags\BE.png" />
-    <Content Include="Assets\img\flags\BF.png" />
-    <Content Include="Assets\img\flags\BG.png" />
-    <Content Include="Assets\img\flags\BO.png" />
-    <Content Include="Assets\img\flags\BR.png" />
-    <Content Include="Assets\img\flags\CA.png" />
-    <Content Include="Assets\img\flags\CD.png" />
-    <Content Include="Assets\img\flags\CG.png" />
-    <Content Include="Assets\img\flags\CH.png" />
-    <Content Include="Assets\img\flags\CL.png" />
-    <Content Include="Assets\img\flags\CM.png" />
-    <Content Include="Assets\img\flags\CN.png" />
-    <Content Include="Assets\img\flags\CO.png" />
-    <Content Include="Assets\img\flags\CZ.png" />
-    <Content Include="Assets\img\flags\DE.png" />
-    <Content Include="Assets\img\flags\DJ.png" />
-    <Content Include="Assets\img\flags\DK.png" />
-    <Content Include="Assets\img\flags\DZ.png" />
-    <Content Include="Assets\img\flags\EE.png" />
-    <Content Include="Assets\img\flags\EG.png" />
-    <Content Include="Assets\img\flags\ES.png" />
-    <Content Include="Assets\img\flags\FI.png" />
-    <Content Include="Assets\img\flags\FR.png" />
-    <Content Include="Assets\img\flags\GA.png" />
-    <Content Include="Assets\img\flags\GB.png" />
-    <Content Include="Assets\img\flags\GM.png" />
-    <Content Include="Assets\img\flags\GT.png" />
-    <Content Include="Assets\img\flags\HN.png" />
-    <Content Include="Assets\img\flags\HT.png" />
-    <Content Include="Assets\img\flags\HU.png" />
-    <Content Include="Assets\img\flags\ID.png" />
-    <Content Include="Assets\img\flags\IE.png" />
-    <Content Include="Assets\img\flags\IL.png" />
-    <Content Include="Assets\img\flags\IN.png" />
-    <Content Include="Assets\img\flags\IQ.png" />
-    <Content Include="Assets\img\flags\IR.png" />
-    <Content Include="Assets\img\flags\IT.png" />
-    <Content Include="Assets\img\flags\JM.png" />
-    <Content Include="Assets\img\flags\JO.png" />
-    <Content Include="Assets\img\flags\JP.png" />
-    <Content Include="Assets\img\flags\KG.png" />
-    <Content Include="Assets\img\flags\KN.png" />
-    <Content Include="Assets\img\flags\KP.png" />
-    <Content Include="Assets\img\flags\KR.png" />
-    <Content Include="Assets\img\flags\KW.png" />
-    <Content Include="Assets\img\flags\KZ.png" />
-    <Content Include="Assets\img\flags\LA.png" />
-    <Content Include="Assets\img\flags\LB.png" />
-    <Content Include="Assets\img\flags\LC.png" />
-    <Content Include="Assets\img\flags\LS.png" />
-    <Content Include="Assets\img\flags\LU.png" />
-    <Content Include="Assets\img\flags\LV.png" />
-    <Content Include="Assets\img\flags\MG.png" />
-    <Content Include="Assets\img\flags\MK.png" />
-    <Content Include="Assets\img\flags\ML.png" />
-    <Content Include="Assets\img\flags\MM.png" />
-    <Content Include="Assets\img\flags\MT.png" />
-    <Content Include="Assets\img\flags\MX.png" />
-    <Content Include="Assets\img\flags\NA.png" />
-    <Content Include="Assets\img\flags\NE.png" />
-    <Content Include="Assets\img\flags\NG.png" />
-    <Content Include="Assets\img\flags\NI.png" />
-    <Content Include="Assets\img\flags\NL.png" />
-    <Content Include="Assets\img\flags\NO.png" />
-    <Content Include="Assets\img\flags\OM.png" />
-    <Content Include="Assets\img\flags\PA.png" />
-    <Content Include="Assets\img\flags\PE.png" />
-    <Content Include="Assets\img\flags\PG.png" />
-    <Content Include="Assets\img\flags\PK.png" />
-    <Content Include="Assets\img\flags\PL.png" />
-    <Content Include="Assets\img\flags\PT.png" />
-    <Content Include="Assets\img\flags\PY.png" />
-    <Content Include="Assets\img\flags\QA.png" />
-    <Content Include="Assets\img\flags\RO.png" />
-    <Content Include="Assets\img\flags\RU.png" />
-    <Content Include="Assets\img\flags\RW.png" />
-    <Content Include="Assets\img\flags\SA.png" />
-    <Content Include="Assets\img\flags\SE.png" />
-    <Content Include="Assets\img\flags\SG.png" />
-    <Content Include="Assets\img\flags\SL.png" />
-    <Content Include="Assets\img\flags\SN.png" />
-    <Content Include="Assets\img\flags\SO.png" />
-    <Content Include="Assets\img\flags\SV.png" />
-    <Content Include="Assets\img\flags\TD.png" />
-    <Content Include="Assets\img\flags\TJ.png" />
-    <Content Include="Assets\img\flags\TL.png" />
-    <Content Include="Assets\img\flags\TR.png" />
-    <Content Include="Assets\img\flags\TZ.png" />
-    <Content Include="Assets\img\flags\UA.png" />
-    <Content Include="Assets\img\flags\US.png" />
-    <Content Include="Assets\img\flags\VE.png" />
-    <Content Include="Assets\img\flags\VN.png" />
-    <Content Include="Assets\img\flags\YE.png" />
-    <Content Include="Assets\img\header.jpg" />
-    <Content Include="Assets\img\hero-image-1.png" />
-    <Content Include="Assets\img\hero-image-2.png" />
-    <Content Include="Assets\img\hero-image-3.png" />
-    <Content Include="Assets\img\invision-white-slim.png" />
-    <Content Include="Assets\img\landing.jpg" />
-    <Content Include="Assets\img\login.jpg" />
-    <Content Include="Assets\img\logo-square.jpg" />
-    <Content Include="Assets\img\logo.png" />
-    <Content Include="Assets\img\now-logo.png" />
-    <Content Include="Assets\img\nucleo-logo.svg" />
-    <Content Include="Assets\img\profile.jpg" />
-    <Content Include="Assets\img\ryan.jpg" />
-    <Content Include="Assets\map\icon.png" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -517,11 +388,6 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\map\.DS_Store" />
-    <Content Include="Assets\map\pak.json" />
-    <Content Include="Assets\map\pakistan.json" />
-    <Content Include="Assets\map\pakistan_ori.json" />
-    <None Include="Properties\PublishProfiles\mdrip - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\newmdrip - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -541,6 +407,13 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
@@ -650,6 +523,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Assets\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -41,7 +41,7 @@
     line-height: 14px;
     border: 1px solid;
     margin-bottom: 5px;
-    min-width: 100px;
+    min-width: 120px;
     max-height:30px
 }
 
@@ -67,7 +67,7 @@
 }
 
 .vis-badge-notselected {
-    box-shadow: 1px 1px 1px 1px green;
+    box-shadow: none;
 } 
 
 .fullh {
